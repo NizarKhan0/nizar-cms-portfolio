@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('work_experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('skill_name');
-            $table->integer('percentage'); // Store the skill progress as a percentage (0-100)
-            $table->string('color_code');
+            $table->string('position');
+            $table->string('company_name')->nullable();
+            $table->string('location');
+            $table->date('start_date');
+            $table->date('end_date')->nullable(); // Allow for current job
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('work_experiences');
     }
 };

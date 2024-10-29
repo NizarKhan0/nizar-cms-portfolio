@@ -5,7 +5,7 @@
                 <a href="#"><img src="{{ asset('dist/assets/compiled/svg/logo.svg') }}" alt="Logo"
                         srcset=""></a>
             </div>
-            <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
+            <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                     role="img" class="iconify iconify--system-uicons" width="20" height="20"
                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
@@ -23,7 +23,7 @@
                     </g>
                 </svg>
                 <div class="form-check form-switch fs-6">
-                    <input class="form-check-input  me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
+                    <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
                     <label class="form-check-label"></label>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -34,7 +34,7 @@
                     </path>
                 </svg>
             </div>
-            <div class="sidebar-toggler  x">
+            <div class="sidebar-toggler x">
                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
             </div>
         </div>
@@ -50,7 +50,7 @@
                 </a>
             </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-briefcase-fill"></i>
                     <span>Manage Home & About</span>
@@ -58,7 +58,7 @@
 
                 <ul class="submenu ">
 
-                    <li class="submenu-item  has-sub">
+                    <li class="submenu-item has-sub">
                         <a href="#" class="submenu-link">Home</a>
 
                         <ul class="submenu submenu-level-2 ">
@@ -72,34 +72,34 @@
 
                     </li>
 
-                    <li class="submenu-item  has-sub">
+                    <li class="submenu-item has-sub">
                         <a href="#" class="submenu-link">Technical Skills</a>
 
                         <ul class="submenu submenu-level-2 ">
 
 
                             <li class="submenu-item ">
-                                <a href="#" class="submenu-link">Skills C.R.U.D</a>
+                                <a href="{{ route('skill.index') }}" class="submenu-link">Skills C.R.U.D</a>
                             </li>
 
                         </ul>
                     </li>
 
-                    <li class="submenu-item  has-sub">
+                    <li class="submenu-item has-sub">
                         <a href="#" class="submenu-link">Work Experience</a>
 
                         <ul class="submenu submenu-level-2 ">
 
 
                             <li class="submenu-item ">
-                                <a href="#" class="submenu-link">Work Experience</a>
+                                <a href="{{ route('work.index') }}" class="submenu-link">Work Experience</a>
                             </li>
 
                         </ul>
 
                     </li>
 
-                    <li class="submenu-item  has-sub">
+                    <li class="submenu-item has-sub">
                         <a href="#" class="submenu-link">Education</a>
 
                         <ul class="submenu submenu-level-2 ">
@@ -115,117 +115,117 @@
                 </ul>
             </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-person-workspace"></i>
                     <span>Manage Portfolio</span>
                 </a>
 
                 <ul class="submenu ">
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-divider.html" class="submenu-link">Divider</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-rating.html" class="submenu-link">Rating</a>
 
                     </li>
                 </ul>
             </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-gear-fill"></i>
                     <span>Manage Services</span>
                 </a>
 
                 <ul class="submenu ">
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-divider.html" class="submenu-link">Divider</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-rating.html" class="submenu-link">Rating</a>
 
                     </li>
                 </ul>
             </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-person-rolodex"></i>
                     <span>Manage Contact</span>
                 </a>
 
                 <ul class="submenu ">
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-divider.html" class="submenu-link">Divider</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
 
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <a href="extra-component-rating.html" class="submenu-link">Rating</a>
 
                     </li>
@@ -235,27 +235,27 @@
 
             <li class="sidebar-title">Features</li>
 
-            <li class="sidebar-item  ">
+            <li class="sidebar-item ">
                 <a href="application-email.html" class='sidebar-link'>
                     <i class="bi bi-envelope-fill"></i>
                     <span>Email Application</span>
                 </a>
             </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-arrow-right-circle-fill"></i>
                     <span>Setting</span>
                 </a>
 
                 <ul class="submenu ">
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
                     </li>
 
-                    <li class="submenu-item  ">
+                    <li class="submenu-item ">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

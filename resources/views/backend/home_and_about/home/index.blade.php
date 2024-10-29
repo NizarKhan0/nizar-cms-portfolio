@@ -15,7 +15,8 @@
                         <!-- Display the uploaded image -->
 
                         <div class="m-3">
-                            <img src="{{ asset('storage/' . $home->image_path) }}" alt="Uploaded Image"
+                            {{-- wajib letak / tu kalau nak ke access dalam storage --}}
+                            <img src="{{ asset('storage/uploads/nizar/' . $home->image_path) }}" alt="Uploaded Image"
                                 style="max-width: 300px;">
                         </div>
 
@@ -46,7 +47,8 @@
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="{{ route('home.update', $home->id) }}" method="POST">
+                            <form action="{{ route('home.update', $home->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-header">
@@ -56,17 +58,29 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3 text-center">
-                                        <img src="{{ asset('img/' . $home->image_path) }}" alt="Current Image"
-                                            class="rounded-circle" style="width: 100px; height: 100px;">
+                                        @if ($home->image_path)
+                                            {{-- wajib letak / tu kalau nak ke access dalam storage --}}
+                                            <img src="{{ asset('storage/uploads/nizar/' . $home->image_path) }}"
+                                                alt="Current Image" class="rounded-circle"
+                                                style="width: 100px; height: 100px;">
+                                        @else
+                                            <p>No Image Uploaded</p>
+                                        @endif
+                                    </div>
+                                    <!-- File Upload Input -->
+                                    <div class="m-3">
+                                        <label for="image_path">Upload New Image:</label>
+                                        <input type="file" name="image_path" class="mb-2 form-control"
+                                            placeholder="Upload Image" accept="image/*">
                                     </div>
                                     <!-- Edit form fields -->
-                                    <input type="text" name="job_title" class="form-control"
+                                    <input type="text" name="job_title" class="mb-2 form-control"
                                         value="{{ $home->job_title }}" required>
-                                    <textarea name="intro" class="form-control" required>{{ $home->intro }}</textarea>
-                                    <textarea name="description" class="form-control" required>{{ $home->description }}</textarea>
-                                    <input type="text" name="cta_link" class="form-control"
+                                    <textarea name="intro" class="mb-2 form-control" required>{{ $home->intro }}</textarea>
+                                    <textarea name="description" class="mb-2 form-control" required>{{ $home->description }}</textarea>
+                                    <input type="text" name="cta_link" class="mb-2 form-control"
                                         value="{{ $home->cta_link }}">
-                                    <input type="text" name="cta_text" class="form-control"
+                                    <input type="text" name="cta_text" class="mb-2 form-control"
                                         value="{{ $home->cta_text }}">
                                 </div>
                                 <div class="modal-footer">
@@ -117,15 +131,15 @@
                             </div>
                             <div class="modal-body">
                                 <!-- Add form fields -->
-                                <input type="text" name="job_title" class="form-control" placeholder="Job Title"
+                                <input type="text" name="job_title" class="mb-2 form-control" placeholder="Job Title"
                                     required>
-                                <textarea name="intro" class="form-control" placeholder="Introduction" required></textarea>
-                                <textarea name="description" class="form-control" placeholder="Description" required></textarea>
-                                <input type="text" name="cta_link" class="form-control" placeholder="CTA Link">
-                                <input type="text" name="cta_text" class="form-control" placeholder="CTA Text">
+                                <textarea name="intro" class="mb-2 form-control" placeholder="Introduction" required></textarea>
+                                <textarea name="description" class="mb-2 form-control" placeholder="Description" required></textarea>
+                                <input type="text" name="cta_link" class="mb-2 form-control" placeholder="CTA Link">
+                                <input type="text" name="cta_text" class="mb-2 form-control" placeholder="CTA Text">
                                 <!-- New input for image upload -->
-                                <input type="file" name="image_path" class="form-control" placeholder="Upload Image"
-                                    accept="image/*" required>
+                                <input type="file" name="image_path" class="mb-2 form-control"
+                                    placeholder="Upload Image" accept="image/*" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -140,7 +154,7 @@
     </section>
 
     <!-- Include Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script> --}}
 
 @endsection
