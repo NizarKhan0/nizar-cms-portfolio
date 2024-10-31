@@ -20,6 +20,8 @@
                 @endforeach
 
             </div>
+
+            {{-- <!-- If we need navigation buttons -->
             <div class="flex justify-center gap-8 mt-8">
                 <button id="slider-button-left"
                     class="flex items-center justify-center w-12 h-12 transition-all duration-500 border border-teal-600 border-solid rounded-full swiper-button-prev group hover:bg-teal-600 "
@@ -41,7 +43,8 @@
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
-            </div>
+            </div> --}}
+
         </div>
     </div>
 </div>

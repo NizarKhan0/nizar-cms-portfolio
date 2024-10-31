@@ -7,7 +7,8 @@
         </div>
 
         <!-- Navigation Arrows -->
-        <div class="flex justify-center gap-8 pt-10">
+
+        {{-- <div class="flex justify-center gap-8 pt-10">
             <button id="slider-button-left"
                 class="flex items-center justify-center w-12 h-12 transition-all duration-500 border border-teal-600 border-solid rounded-full swiper-button-prev group hover:bg-teal-600 "
                 data-carousel-prev>
@@ -28,7 +29,7 @@
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
-        </div>
+        </div> --}}
 
 
         <div class="mt-10 swiper mySwiper">
