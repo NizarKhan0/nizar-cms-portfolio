@@ -30,31 +30,42 @@
             </button>
         </div>
 
+
         <div class="mt-10 swiper mySwiper">
             <div class="swiper-wrapper">
-                <!-- Slide -->
-                <div class="p-4 overflow-hidden transition-all duration-300 rounded-md swiper-slide bg-secondary">
-                    <img src="https://readymadeui.com/images/food44.webp" alt=""
-                        class="object-cover w-full h-64 rounded-md" />
-                    <div class="text-center">
-                        <span class="block mt-4 mb-2 text-sm text-slate-100"></span>
-                        <h3 class="mb-4 text-xl font-bold text-slate-100"></h3>
-                        <p class="text-sm text-slate-100"></p>
-                        <div>
-                            <span
-                                class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md text-slate-600 bg-teal-50 ring-1 ring-inset ring-gray-500/10">php</span>
-                            <span
-                                class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md text-slate-600 bg-teal-50 ring-1 ring-inset ring-gray-500/10">laravel</span>
-                            <span
-                                class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md text-slate-600 bg-teal-50 ring-1 ring-inset ring-gray-500/10">tailwind</span>
+
+                @foreach ($portfolios as $portfolio)
+                    <!-- Slide -->
+                    <div class="p-4 overflow-hidden transition-all duration-300 rounded-md swiper-slide bg-secondary">
+                        {{-- <img src="https://readymadeui.com/images/food44.webp" alt=""
+                            class="object-cover w-full h-64 rounded-md" /> --}}
+                        <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image_path) }}"
+                            alt="" class="object-cover w-full h-64 rounded-md" />
+                        <div class="text-center">
+                            {{-- <span class="block mt-4 mb-2 text-sm text-slate-100"></span> --}}
+                            <h3 class="mb-4 text-xl font-bold text-slate-100">{{ $portfolio->project_title }}</h3>
+                            <p class="text-sm text-slate-100">
+                                {{ $portfolio->project_description }}
+                            </p>
+                            <div class="mt-4">
+                                @foreach ($portfolio->skills as $skill)
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md text-slate-600 bg-teal-50 ring-1 ring-inset ring-gray-500/10">{{ $skill->skill_name }}</span>
+                                @endforeach
+                            </div>
+                            <button type="button"
+                                class="px-5 py-2.5 text-white text-sm tracking-wider border-none outline-none rounded-md bg-teal-500 hover:bg-purple-teal mt-6"
+                                onclick="window.open('{{ $portfolio->project_link }}', '_blank')">
+                                View Project
+                            </button>
+                            {{-- <button type="button"
+                                class="px-5 py-2.5 text-white text-sm tracking-wider border-none outline-none rounded-md bg-teal-500 hover:bg-purple-teal mt-6">Visit {{ $portfolio->project_link}}
+                            </button> --}}
                         </div>
-                        <button type="button"
-                            class="px-5 py-2.5 text-white text-sm tracking-wider border-none outline-none rounded-md bg-teal-500 hover:bg-purple-teal mt-6">Visit
-                        </button>
                     </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
-
     </div>
 </div>

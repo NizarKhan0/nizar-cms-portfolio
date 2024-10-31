@@ -73,7 +73,8 @@
                             <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->start_date)) }} -
                                 {{ date('F Y', strtotime($work->end_date)) }}</p>
                         @else
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->start_date)) }} - Present</p>
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->start_date)) }} - Present
+                            </p>
                         @endif
                     </div>
                 </div>
@@ -87,10 +88,11 @@
         <h3 class="mb-6 text-2xl font-extrabold text-center text-primary">Education</h3>
         <div class="space-y-8">
 
-            <!-- Education Item-->
-            <div class="flex flex-col items-center space-y-2">
-                <!-- Icon -->
-                {{-- <div class="p-3 bg-teal-600 rounded-full">
+            @foreach ($educations as $education)
+                <!-- Education Item-->
+                <div class="flex flex-col items-center space-y-2">
+                    <!-- Icon -->
+                    {{-- <div class="p-3 bg-teal-600 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -101,13 +103,22 @@
                         <path d="M12 12v6" /> <!-- Tassel hanging down -->
                     </svg>
                 </div> --}}
-                <!-- Education Information -->
-                <div class="text-center text-secondary">
-                    <h4 class="text-xl font-bold text-third">Diploma </h4>
-                    <p class="text-sm font-semibold">UiTM Kampus Segamat - Johor</p>
-                    <p class="text-sm font-semibold">October 2020 - February 2023</p>
+                    <!-- Education Information -->
+                    <div class="text-center text-secondary">
+                        <h4 class="text-xl font-bold text-third">{{ $education->education_name }}</h4>
+                        <p class="text-sm font-semibold">{{ $education->institution_name }} -
+                            {{ $education->location }}
+                        </p>
+                        @if ($education->end_date)
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->start_date)) }} -
+                                {{ date('F Y', strtotime($education->end_date)) }}</p>
+                        @else
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->start_date)) }} -
+                                Present</p>
+                        @endif
+                    </div>
                 </div>
-            </div>
+            @endforeach
 
         </div>
     </div>

@@ -106,7 +106,7 @@
 
 
                             <li class="submenu-item ">
-                                <a href="#" class="submenu-link">Education</a>
+                                <a href="{{ route('education.index') }}" class="submenu-link">Education</a>
                             </li>
 
                         </ul>
@@ -123,33 +123,7 @@
 
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-divider.html" class="submenu-link">Divider</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-rating.html" class="submenu-link">Rating</a>
-
+                        <a href="{{ route('portfolio.index') }}" class="submenu-link">C.R.U.D</a>
                     </li>
                 </ul>
             </li>
@@ -162,32 +136,7 @@
 
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-divider.html" class="submenu-link">Divider</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-rating.html" class="submenu-link">Rating</a>
+                        <a href="{{ route('service.index') }}" class="submenu-link">C.R.U.D</a>
 
                     </li>
                 </ul>
@@ -201,32 +150,7 @@
 
                 <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="extra-component-avatar.html" class="submenu-link">Avatar</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-divider.html" class="submenu-link">Divider</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-date-picker.html" class="submenu-link">Date Picker</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-sweetalert.html" class="submenu-link">Sweet Alert</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-toastify.html" class="submenu-link">Toastify</a>
-
-                    </li>
-
-                    <li class="submenu-item ">
-                        <a href="extra-component-rating.html" class="submenu-link">Rating</a>
+                        <a href="{{ route('contact.index') }}" class="submenu-link">C.R.U.D</a>
 
                     </li>
                 </ul>

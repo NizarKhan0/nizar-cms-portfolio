@@ -11,4 +11,9 @@ class Skill extends Model
         'percentage',
         'color_code',
     ];
+
+    public function portfolios()
+    {
+        return $this->belongsToMany(Portfolio::class, 'portfolio_skill');
+    }
 }

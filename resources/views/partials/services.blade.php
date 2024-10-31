@@ -1,22 +1,23 @@
 <h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary">Services</h1>
 <div class="font-[sans-serif]">
     <div class="max-w-6xl px-4 py-6 mx-auto">
-        <h2 class="mb-16 text-4xl font-extrabold text-center text-secondary">Discover Our Exclusive Features</h2>
+
+        <h2 class="mb-16 text-4xl font-extrabold text-center text-secondary">{{ $serviceMainTitle }}</h2>
 
         <!-- <div class="grid grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3 max-md:max-w-md"> -->
         <!--Slider wrapper-->
-        <div class="swiper mySwiper">
+        <div class="text-center swiper mySwiper">
             <div class="swiper-wrapper">
 
-                <div
-                    class="overflow-hidden transition-all shadow-md bg-secondary swiper-slide rounded-2xl hover:shadow-lg">
-                    <div class="p-8">
-                        <h3 class="mb-3 text-xl font-semibold text-slate-800">Customization</h3>
-                        <p class="text-sm leading-relaxed text-slate-300">Tailor our product to suit your needs Tailor
-                            our
-                            product to suit your needs.</p>
+                @foreach ($services as $service)
+                    <div
+                        class="overflow-hidden transition-all shadow-md bg-secondary swiper-slide rounded-2xl hover:shadow-lg">
+                        <div class="p-8">
+                            <h3 class="mb-3 text-xl font-semibold text-white">{{ $service->service_title }}</h3>
+                            <p class="text-sm leading-relaxed text-slate-300">{{ $service->service_description }}</p>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
             </div>
             <div class="flex justify-center gap-8 mt-8">

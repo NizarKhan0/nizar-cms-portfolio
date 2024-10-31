@@ -76,7 +76,6 @@
     <script src="{{ asset('dist/assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('dist/assets/static/js/pages/datatables.js') }}"></script>
-
 </body>
 
 </html>
