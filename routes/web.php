@@ -23,7 +23,11 @@ Route::get('/dashboard', [HomePageController::class, 'dashboard'])->middleware([
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function (){
+
+// });
+
+Route::middleware(['auth', 'verified'])->group(function () {
 
     //Home and About (Route Model Binding Get All Data In Model, If {id} just id)
     Route::controller(HomeController::class)->group(function () {

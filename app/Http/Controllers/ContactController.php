@@ -24,10 +24,10 @@ class ContactController extends Controller
             'number_phone' => 'required',
             'email' => 'required',
             'address' => 'required',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'contact_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $image = $request->file('image_path');
+        $image = $request->file('contact_logo');
         $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
         $extension = $image->getClientOriginalExtension(); // Get the file extension
         $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
@@ -38,7 +38,7 @@ class ContactController extends Controller
             'number_phone' => $request->number_phone,
             'email' => $request->email,
             'address' => $request->address,
-            'image_path' => $imageName
+            'contact_logo' => $imageName
         ]);
 
         return redirect()->route('contact.index')->with('success', 'Contact created successfully.');
@@ -50,28 +50,28 @@ class ContactController extends Controller
             'number_phone' => 'required',
             'email' => 'required',
             'address' => 'required',
-            'image_path' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'contact_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Check if a new image has been uploaded
-        if ($request->hasFile('image_path')) {
+        if ($request->hasFile('contact_logo')) {
             // Delete the old image if it exists
-            if ($contact->image_path) {
-                $oldImagePath = public_path('storage/uploads/contacts/' . $contact->image_path);
+            if ($contact->contact_logo) {
+                $oldImagePath = public_path('storage/uploads/contacts/' . $contact->contact_logo);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Delete the old image file
                 }
             }
 
             // Upload the new image
-            $image = $request->file('image_path');
+            $image = $request->file('contact_logo');
             $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
             $extension = $image->getClientOriginalExtension(); // Get the file extension
             $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
             $image->move(public_path('storage/uploads/contacts'), $imageName); // Save the new image
 
             // Update the image path in the database
-            $contact->image_path = $imageName;
+            $contact->contact_logo = $imageName;
         }
 
         // Update the contact

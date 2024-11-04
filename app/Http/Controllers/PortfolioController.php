@@ -10,7 +10,7 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        $title = 'Portfolio';
+        $title = 'Portfolio CMS';
         // $portfolio = Portfolio::all();
         $portfolio = Portfolio::with('skills')->get(); // Eager load skills
         $skill = Skill::all();
@@ -34,7 +34,7 @@ class PortfolioController extends Controller
             'project_title' => 'required',
             'project_description' => 'required',
             'project_link' => 'required',
-            'project_image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'project_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'skills' => 'array', // Validate that 'skills' is an array of selected skill IDs
         ]);
 
@@ -42,7 +42,7 @@ class PortfolioController extends Controller
         // $portfolio = $request->all();
         // Portfolio::create($portfolio);
 
-        $image = $request->file('project_image_path');
+        $image = $request->file('project_image');
         $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
         $extension = $image->getClientOriginalExtension(); // Get the file extension
         $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
@@ -54,7 +54,7 @@ class PortfolioController extends Controller
             'project_title' => $request->project_title,
             'project_description' => $request->project_description,
             'project_link' => $request->project_link,
-            'project_image_path' => $imageName
+            'project_image' => $imageName
         ]);
 
         // Attach the selected skills to the portfolio
@@ -72,7 +72,7 @@ class PortfolioController extends Controller
             'project_title' => 'required',
             'project_description' => 'required',
             'project_link' => 'required',
-            'project_image_path' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'project_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'skills' => 'array', // Validate that 'skills' is an array of selected skill IDs
         ]);
 
@@ -80,24 +80,24 @@ class PortfolioController extends Controller
         // $portfolio->update($request->all());
 
         // Check if a new image has been uploaded
-        if ($request->hasFile('project_image_path')) {
+        if ($request->hasFile('project_image')) {
             // Delete the old image if it exists
-            if ($portfolio->project_image_path) {
-                $oldImagePath = public_path('storage/uploads/projects/' . $portfolio->project_image_path);
+            if ($portfolio->project_image) {
+                $oldImagePath = public_path('storage/uploads/projects/' . $portfolio->project_image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Delete the old image file
                 }
             }
 
             // Upload the new image
-            $image = $request->file('project_image_path');
+            $image = $request->file('project_image');
             $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
             $extension = $image->getClientOriginalExtension(); // Get the file extension
             $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
             $image->move(public_path('storage/uploads/projects'), $imageName); // Save the new image
 
             // Update the image path in the database
-            $portfolio->project_image_path = $imageName;
+            $portfolio->project_image = $imageName;
         }
 
         // Update the portfolio

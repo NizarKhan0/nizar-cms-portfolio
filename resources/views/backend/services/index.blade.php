@@ -53,9 +53,6 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Edit form fields -->
-                                                            {{-- <input type="text" name="main_title"
-                                                                class="mb-2 form-control" placeholder="Main Title"
-                                                                value="{{ $service->main_title }}"> --}}
                                                             <input type="text" name="service_title"
                                                                 class="mb-2 form-control" placeholder="Service Title"
                                                                 value="{{ $service->service_title }}" required>
@@ -128,7 +125,6 @@
                     </div>
                     <div class="modal-body">
                         <!-- Add form fields -->
-                        {{-- <input type="text" name="main_title" class="mb-2 form-control" placeholder="Main Title"> --}}
                         <input type="text" name="service_title" class="mb-2 form-control" placeholder="Service Title"
                             required>
                         <textarea name="service_description" class="mb-2 form-control" required></textarea>

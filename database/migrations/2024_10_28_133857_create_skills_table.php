@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('skill_name');
-            $table->integer('percentage'); // Store the skill progress as a percentage (0-100)
-            $table->string('color_code');
+            $table->string('skill_name', 255)->nullable();
+            $table->unsignedInteger('percentage')->default(0)->nullable(); // Skill progress as a percentage (0-100)
+            $table->string('color_code', 10)->nullable();
             $table->timestamps();
         });
     }

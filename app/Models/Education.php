@@ -9,8 +9,8 @@ class Education extends Model
     protected $fillable = [
         'education_name',
         'institution_name',
-        'location',
-        'start_date',
-        'end_date',
+        'institution_address',
+        'education_start_date',
+        'education_end_date',
     ];
 }

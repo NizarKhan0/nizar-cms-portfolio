@@ -10,6 +10,6 @@ class Contact extends Model
         'number_phone',
         'email',
         'address',
-        'image_path',
+        'contact_logo',
     ];
 }

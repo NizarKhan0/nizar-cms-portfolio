@@ -62,18 +62,18 @@
                     </div> --}}
                     <!-- Job Information -->
                     <div class="text-center text-secondary">
-                        <h4 class="text-xl font-bold text-third">{{ $work->position }}</h4>
+                        <h4 class="text-xl font-bold text-third">{{ $work->job_position }}</h4>
                         @if ($work->company_name == null)
-                            {{ $work->location }}
+                            {{ $work->company_address }}
                         @else
-                            <p class="text-sm font-semibold">{{ $work->company_name }} - {{ $work->location }}</p>
+                            <p class="text-sm font-semibold">{{ $work->company_name }} - {{ $work->company_address }}</p>
                         @endif
 
-                        @if ($work->end_date)
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->start_date)) }} -
-                                {{ date('F Y', strtotime($work->end_date)) }}</p>
+                        @if ($work->work_end_date)
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->work_start_date)) }} -
+                                {{ date('F Y', strtotime($work->work_end_date)) }}</p>
                         @else
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->start_date)) }} - Present
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->work_start_date)) }} - Present
                             </p>
                         @endif
                     </div>
@@ -107,13 +107,13 @@
                     <div class="text-center text-secondary">
                         <h4 class="text-xl font-bold text-third">{{ $education->education_name }}</h4>
                         <p class="text-sm font-semibold">{{ $education->institution_name }} -
-                            {{ $education->location }}
+                            {{ $education->institution_address }}
                         </p>
-                        @if ($education->end_date)
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->start_date)) }} -
-                                {{ date('F Y', strtotime($education->end_date)) }}</p>
+                        @if ($education->education_end_date)
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->education_start_date)) }} -
+                                {{ date('F Y', strtotime($education->education_end_date)) }}</p>
                         @else
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->start_date)) }} -
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->education_start_date)) }} -
                                 Present</p>
                         @endif
                     </div>

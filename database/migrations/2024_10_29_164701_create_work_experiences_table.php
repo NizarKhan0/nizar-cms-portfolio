@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('work_experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('position');
-            $table->string('company_name')->nullable();
-            $table->string('location');
-            $table->date('start_date');
-            $table->date('end_date')->nullable(); // Allow for current job
+            $table->string('job_position', 100)->nullable();
+            $table->string('company_name', 100)->nullable();
+            $table->string('company_address', 255)->nullable();
+            $table->date('work_start_date')->nullable();
+            $table->date('work_end_date')->nullable(); // Allow for current job
             $table->timestamps();
         });
     }

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class WorkExperience extends Model
 {
     protected $fillable = [
-        'position',
+        'job_position',
         'company_name',
-        'location',
-        'start_date',
-        'end_date',
+        'company_address',
+        'work_start_date',
+        'work_end_date',
     ];
 }

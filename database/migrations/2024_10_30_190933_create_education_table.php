@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('education', function (Blueprint $table) {
             $table->id();
-            $table->string('education_name');
-            $table->string('institution_name')->nullable();
-            $table->string('location');
-            $table->date('start_date');
-            $table->date('end_date')->nullable(); // Allow for current job
+            $table->string('education_name', 255)->nullable();
+            $table->string('institution_name', 255)->nullable();
+            $table->string('institution_address', 255)->nullable();
+            $table->date('education_start_date')->nullable();
+            $table->date('education_end_date')->nullable(); // Allow for current job
             $table->timestamps();
         });
     }

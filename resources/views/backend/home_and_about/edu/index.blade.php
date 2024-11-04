@@ -20,7 +20,7 @@
                             <tr>
                                 <th>Education</th>
                                 <th>Institute Name</th>
-                                <th>Address</th>
+                                <th>Institute Address</th>
                                 <th>Start Date & End Date</th>
                                 <th>Action</th>
                             </tr>
@@ -34,12 +34,12 @@
                                     @else
                                         <td>{{ $education->institution_name }}</td>
                                     @endif
-                                    <td>{{ $education->location }}</td>
+                                    <td>{{ $education->institution_address }}</td>
                                     <td>
-                                        @if ($education->end_date)
-                                            {{ $education->start_date }} - {{ $education->end_date }}
+                                        @if ($education->education_end_date)
+                                            {{ $education->education_start_date }} - {{ $education->education_end_date }}
                                         @else
-                                            {{ $education->start_date }} - Present
+                                            {{ $education->education_start_date }} - Present
                                         @endif
                                     </td>
 
@@ -69,13 +69,13 @@
                                                             <input type="text" name="institution_name"
                                                                 class="mb-2 form-control"
                                                                 value="{{ $education->institution_name }}">
-                                                            <input type="text" name="location" class="mb-2 form-control"
-                                                                value="{{ $education->location }}" required>
-                                                            <input type="date" name="start_date"
-                                                                class="mb-3 form-control" value="{{ $education->start_date }}"
+                                                            <input type="text" name="institution_address" class="mb-2 form-control"
+                                                                value="{{ $education->institution_address }}" required>
+                                                            <input type="date" name="education_start_date"
+                                                                class="mb-3 form-control" value="{{ $education->education_start_date }}"
                                                                 required>
-                                                            <input type="date" name="end_date" class="mb-3 form-control"
-                                                                value="{{ $education->end_date }}">
+                                                            <input type="date" name="education_end_date" class="mb-3 form-control"
+                                                                value="{{ $education->education_end_date }}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -144,10 +144,10 @@
                         <!-- Add form fields -->
                         <input type="text" name="education_name" class="mb-2 form-control" placeholder="Education" required>
                         <input type="text" name="institution_name" class="mb-2 form-control" placeholder="Institution Name">
-                        <input type="text" name="location" class="mb-2 form-control" placeholder="Address" required>
-                        <input type="date" name="start_date" class="mb-3 form-control" placeholder="Select date.."
+                        <input type="text" name="institution_address" class="mb-2 form-control" placeholder="Institution Address" required>
+                        <input type="date" name="education_start_date" class="mb-3 form-control" placeholder="Select date.."
                             required>
-                        <input type="date" name="end_date" class="mb-3 form-control" placeholder="Select date..">
+                        <input type="date" name="education_end_date" class="mb-3 form-control" placeholder="Select date..">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

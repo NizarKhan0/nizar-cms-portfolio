@@ -23,8 +23,8 @@ class HomePageController extends Controller
         // $skill= Skill::all();
         $skill = Skill::orderBy('percentage', 'desc')->get();
         // $work = WorkExperience::all(); atau boleh guna created_at
-        $work = WorkExperience::orderBy('start_date', 'desc')->get();
-        $education = Education::orderBy('start_date', 'desc')->get();
+        $work = WorkExperience::orderBy('work_start_date', 'desc')->get();
+        $education = Education::orderBy('education_start_date', 'desc')->get();
         $portfolio = Portfolio::with('skills')->get();
         $services = Service::all();
         $serviceMainTitle = 'Our Services';
@@ -46,8 +46,20 @@ class HomePageController extends Controller
     {
         $title = 'Profile Statistics';
 
+        $skill = Skill::all();
+        $work = WorkExperience::all();
+        $education = Education::all();
+        $portfolio = Portfolio::all();
+        $services = Service::all();
+
+
         return view('backend.dashboard', [
-            'title' => $title
+            'title' => $title,
+            'skills' => $skill,
+            'works' => $work,
+            'educations' => $education,
+            'portfolios' => $portfolio,
+            'services' => $services
         ]);
     }
 

@@ -24,9 +24,9 @@ class EducationController extends Controller
         $validate = $request->validate([
             'education_name' => 'required',
             'institution_name' => 'required',
-            'location' => 'required',
-            'start_date' => 'required|date',
-            'end_date' => 'nullable|date',
+            'institution_address' => 'required',
+            'education_start_date' => 'required|date',
+            'education_end_date' => 'nullable|date',
         ]);
 
         //Boleh guna cara ni kalau takda file upload
@@ -41,9 +41,9 @@ class EducationController extends Controller
         $validate = $request->validate([
             'education_name' => 'required',
             'institution_name' => 'required',
-            'location' => 'required',
-            'start_date' => 'required|date',
-            'end_date' => 'nullable|date',
+            'institution_address' => 'required',
+            'education_start_date' => 'required|date',
+            'education_end_date' => 'nullable|date',
         ]);
 
         //Boleh guna cara ni kalau takda file upload

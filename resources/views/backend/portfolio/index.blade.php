@@ -42,7 +42,7 @@
                                         @endforeach
                                     </td> --}}
                                     <td>
-                                        <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image_path) }}"
+                                        <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image) }}"
                                             alt="" width="100" height="100">
                                     </td>
                                     <td>
@@ -66,9 +66,9 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="m-3 text-center">
-                                                                @if ($portfolio->project_image_path)
+                                                                @if ($portfolio->project_image)
                                                                     {{-- wajib letak / tu kalau nak ke access dalam storage --}}
-                                                                    <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image_path) }}"
+                                                                    <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image) }}"
                                                                         alt="Current Image" class="rounded-circle"
                                                                         style="width: 100px; height: 100px;">
                                                                 @else
@@ -77,18 +77,18 @@
                                                             </div>
                                                             <!-- File Upload Input -->
                                                             <div class="m-3">
-                                                                <label for="project_image_path">Upload New Project
+                                                                <label for="project_image">Upload New Project
                                                                     Image:</label>
-                                                                <input type="file" name="project_image_path"
+                                                                <input type="file" name="project_image"
                                                                     class="mb-2 form-control"
                                                                     placeholder="Upload Project Image" accept="image/*">
                                                             </div>
                                                             <!-- Edit form fields -->
                                                             <input type="text" name="project_title"
-                                                                class="mb-2 form-control" placeholder="Skill Name"
+                                                                class="mb-2 form-control" placeholder="Project Title"
                                                                 value="{{ $portfolio->project_title }}" required>
                                                             <input type="text" name="project_description"
-                                                                class="mb-2 form-control" placeholder="Skill Description"
+                                                                class="mb-2 form-control" placeholder="Project Description"
                                                                 value="{{ $portfolio->project_description }}" required>
                                                             <input type="text" name="project_link"
                                                                 class="mb-2 form-control" placeholder="Project Link"
@@ -189,8 +189,8 @@
                         @endforeach
 
                         <div class="m-3">
-                            <label for="project_image_path">Upload New Project Image:</label>
-                            <input type="file" name="project_image_path" class="mb-2 form-control"
+                            <label for="project_image">Upload New Project Image:</label>
+                            <input type="file" name="project_image" class="mb-2 form-control"
                                 placeholder="Upload Image" accept="image/*">
                         </div>
 

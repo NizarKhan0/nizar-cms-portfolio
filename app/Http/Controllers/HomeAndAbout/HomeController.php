@@ -21,16 +21,16 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $request->validate([
             'job_title' => 'required',
             'intro' => 'required',
             'description' => 'required',
             'cta_link' => 'required',
             'cta_text' => 'required',
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nizar_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $image = $request->file('image_path');
+        $image = $request->file('nizar_image');
         $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
         $extension = $image->getClientOriginalExtension(); // Get the file extension
         $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
@@ -42,7 +42,7 @@ class HomeController extends Controller
             'description' => $request->description,
             'cta_link' => $request->cta_link,
             'cta_text' => $request->cta_text,
-            'image_path' => $imageName
+            'nizar_image' => $imageName
         ]);
 
         // dd($home);
@@ -52,19 +52,19 @@ class HomeController extends Controller
 
     public function update(Home $home, Request $request)
     {
-        $validate = $request->validate([
+        $request->validate([
             'job_title' => 'required',
             'intro' => 'required',
             'description' => 'required',
             'cta_link' => 'required',
             'cta_text' => 'required',
-            'image_path' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nizar_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Check if a new image has been uploaded
-        if ($request->hasFile('image_path')) {
+        if ($request->hasFile('nizar_image')) {
             // Delete the old image if it exists
-            if ($home->image_path) {
+            if ($home->nizar_image) {
                 $oldImagePath = public_path('storage/uploads/nizar/' . $home->image_path);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Delete the old image file
@@ -72,14 +72,14 @@ class HomeController extends Controller
             }
 
             // Upload the new image
-            $image = $request->file('image_path');
+            $image = $request->file('nizar_image');
             $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
             $extension = $image->getClientOriginalExtension(); // Get the file extension
             $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
             $image->move(public_path('storage/uploads/nizar'), $imageName); // Save the new image
 
             // Update the image path in the database
-            $home->image_path = $imageName;
+            $home->nizar_image = $imageName;
         }
 
         // Update the other fields

@@ -40,7 +40,7 @@
                     <div class="p-4 overflow-hidden transition-all duration-300 rounded-md swiper-slide bg-secondary">
                         {{-- <img src="https://readymadeui.com/images/food44.webp" alt=""
                             class="object-cover w-full h-64 rounded-md" /> --}}
-                        <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image_path) }}"
+                        <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image) }}"
                             alt="" class="object-cover w-full h-64 rounded-md" />
                         <div class="text-center">
                             {{-- <span class="block mt-4 mb-2 text-sm text-slate-100"></span> --}}

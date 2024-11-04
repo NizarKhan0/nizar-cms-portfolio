@@ -33,7 +33,7 @@
                                     <td>{{ $contact->email }}</td>
                                     <td>{{ $contact->address }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/uploads/contacts/' . $contact->image_path) }}"
+                                        <img src="{{ asset('storage/uploads/contacts/' . $contact->contact_logo) }}"
                                             alt="" width="100" height="100">
                                     </td>
                                     <td>
@@ -57,9 +57,9 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="m-3 text-center">
-                                                                @if ($contact->image_path)
+                                                                @if ($contact->contact_logo)
                                                                     {{-- wajib letak / tu kalau nak ke access dalam storage --}}
-                                                                    <img src="{{ asset('storage/uploads/contacts/' . $contact->image_path) }}"
+                                                                    <img src="{{ asset('storage/uploads/contacts/' . $contact->contact_logo) }}"
                                                                         alt="Current Image" class="rounded-circle"
                                                                         style="width: 100px; height: 100px;">
                                                                 @else
@@ -68,9 +68,9 @@
                                                             </div>
                                                             <!-- File Upload Input -->
                                                             <div class="m-3">
-                                                                <label for="image_path">Upload New Contact
+                                                                <label for="contact_logo">Upload New Contact
                                                                     Image:</label>
-                                                                <input type="file" name="image_path"
+                                                                <input type="file" name="contact_logo"
                                                                     class="mb-2 form-control"
                                                                     placeholder="Upload Project Image" accept="image/*">
                                                             </div>
@@ -157,8 +157,8 @@
                             required>
                         <input type="email" name="email" class="mb-2 form-control" placeholder="Email" required>
                         <input type="text" name="address" class="mb-2 form-control" placeholder="Address" required>
-                        <input type="file" name="image_path" class="mb-2 form-control" placeholder="Upload Image"
-                            accept="image/*" required>
+                        <input type="file" name="contact_logo" class="mb-2 form-control" placeholder="Upload Image"
+                            accept="image/*">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

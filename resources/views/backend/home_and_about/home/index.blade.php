@@ -16,7 +16,7 @@
                             <div class="p-4 d-flex flex-column align-items-center justify-content-center">
                                 <!-- Display the uploaded image -->
                                 <div class="m-3">
-                                    <img src="{{ asset('storage/uploads/nizar/' . $home->image_path) }}"
+                                    <img src="{{ asset('storage/uploads/nizar/' . $home->nizar_image) }}"
                                         alt="Uploaded Image" class="img-fluid" style="max-width: 300px;">
                                 </div>
 
@@ -57,8 +57,8 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3 text-center">
-                                                @if ($home->image_path)
-                                                    <img src="{{ asset('storage/uploads/nizar/' . $home->image_path) }}"
+                                                @if ($home->nizar_image)
+                                                    <img src="{{ asset('storage/uploads/nizar/' . $home->nizar_image) }}"
                                                         alt="Current Image" class="rounded-circle img-fluid"
                                                         style="width: 100px; height: 100px;">
                                                 @else
@@ -67,8 +67,8 @@
                                             </div>
                                             <!-- File Upload Input -->
                                             <div class="m-3">
-                                                <label for="image_path">Upload New Image:</label>
-                                                <input type="file" name="image_path" class="mb-2 form-control"
+                                                <label for="nizar_image">Upload New Image:</label>
+                                                <input type="file" name="nizar_image" class="mb-2 form-control"
                                                     placeholder="Upload Image" accept="image/*">
                                             </div>
                                             <!-- Edit form fields -->
@@ -141,7 +141,7 @@
                                         placeholder="CTA Link">
                                     <input type="text" name="cta_text" class="mb-2 form-control"
                                         placeholder="CTA Text">
-                                    <input type="file" name="image_path" class="mb-2 form-control"
+                                    <input type="file" name="nizar_image" class="mb-2 form-control"
                                         placeholder="Upload Image" accept="image/*" required>
                                 </div>
                                 <div class="modal-footer">

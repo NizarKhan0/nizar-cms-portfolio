@@ -2,7 +2,7 @@
 
     @foreach ($contacts as $contact)
         <div>
-            <a href='javascript:void(0)'><img src="{{ asset('storage/uploads/contacts/' . $contact->image_path) }}"
+            <a href='javascript:void(0)'><img src="{{ asset('storage/uploads/contacts/' . $contact->contact_logo) }}"
                     alt="logo" class='w-44' /></a>
 
             <ul class="mt-10 space-y-6">

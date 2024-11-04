@@ -23,7 +23,6 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'main_title' => 'nullable',
             'service_title' => 'required',
             'service_description' => 'required',
         ]);
@@ -38,7 +37,6 @@ class ServicesController extends Controller
     public function update(Request $request, Service $service)
     {
         $validate = $request->validate([
-            'main_title' => 'nullable',
             'service_title' => 'required',
             'service_description' => 'required',
         ]);

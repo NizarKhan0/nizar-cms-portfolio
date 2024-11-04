@@ -9,8 +9,8 @@ class Portfolio extends Model
     protected $fillable = [
         'project_title',
         'project_description',
-        'project_image_path',
         'project_link',
+        'project_image'
     ];
 
     public function skills()

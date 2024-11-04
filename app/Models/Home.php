@@ -12,6 +12,6 @@ class Home extends Model
         'description',
         'cta_link',
         'cta_text',
-        'image_path',
+        'nizar_image',
     ];
 }

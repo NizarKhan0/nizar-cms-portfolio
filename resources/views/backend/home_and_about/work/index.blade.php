@@ -18,9 +18,9 @@
                     <table class="table" id="table1">
                         <thead>
                             <tr>
-                                <th>Position</th>
+                                <th>Job Position</th>
                                 <th>Company Name</th>
-                                <th>Address</th>
+                                <th>Company Address</th>
                                 <th>Start Date & End Date</th>
                                 <th>Action</th>
                             </tr>
@@ -28,18 +28,18 @@
                         <tbody>
                             @foreach ($works as $work)
                                 <tr>
-                                    <td>{{ $work->position }}</td>
+                                    <td>{{ $work->job_position }}</td>
                                     @if ($work->company_name == null)
                                         <td>No Company</td>
                                     @else
                                         <td>{{ $work->company_name }}</td>
                                     @endif
-                                    <td>{{ $work->location }}</td>
+                                    <td>{{ $work->company_address }}</td>
                                     <td>
-                                        @if ($work->end_date)
-                                            {{ $work->start_date }} - {{ $work->end_date }}
+                                        @if ($work->work_end_date)
+                                            {{ $work->work_start_date }} - {{ $work->work_end_date }}
                                         @else
-                                            {{ $work->start_date }} - Present
+                                            {{ $work->work_start_date }} - Present
                                         @endif
                                     </td>
 
@@ -64,18 +64,18 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Edit form fields -->
-                                                            <input type="text" name="position" class="mb-2 form-control"
-                                                                value="{{ $work->position }}" required>
+                                                            <input type="text" name="job_position" class="mb-2 form-control"
+                                                                value="{{ $work->job_position }}" required>
                                                             <input type="text" name="company_name"
                                                                 class="mb-2 form-control"
                                                                 value="{{ $work->company_name }}">
-                                                            <input type="text" name="location" class="mb-2 form-control"
-                                                                value="{{ $work->location }}" required>
-                                                            <input type="date" name="start_date"
-                                                                class="mb-3 form-control" value="{{ $work->start_date }}"
+                                                            <input type="text" name="company_address" class="mb-2 form-control"
+                                                                value="{{ $work->company_address }}" required>
+                                                            <input type="date" name="work_start_date"
+                                                                class="mb-3 form-control" value="{{ $work->work_start_date }}"
                                                                 required>
-                                                            <input type="date" name="end_date" class="mb-3 form-control"
-                                                                value="{{ $work->end_date }}">
+                                                            <input type="date" name="work_end_date" class="mb-3 form-control"
+                                                                value="{{ $work->work_end_date }}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -142,12 +142,12 @@
                     </div>
                     <div class="modal-body">
                         <!-- Add form fields -->
-                        <input type="text" name="position" class="mb-2 form-control" placeholder="Position" required>
+                        <input type="text" name="job_position" class="mb-2 form-control" placeholder="Job Position" required>
                         <input type="text" name="company_name" class="mb-2 form-control" placeholder="Company Name">
-                        <input type="text" name="location" class="mb-2 form-control" placeholder="Address" required>
-                        <input type="date" name="start_date" class="mb-3 form-control" placeholder="Select date.."
+                        <input type="text" name="company_address" class="mb-2 form-control" placeholder="Company Address" required>
+                        <input type="date" name="work_start_date" class="mb-3 form-control" placeholder="Select date.."
                             required>
-                        <input type="date" name="end_date" class="mb-3 form-control" placeholder="Select date..">
+                        <input type="date" name="work_end_date" class="mb-3 form-control" placeholder="Select date..">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

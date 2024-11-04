@@ -23,11 +23,11 @@ class WorkController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'position' => 'required',
+            'job_position' => 'required',
             'company_name' => 'nullable',
-            'location' => 'required',
-            'start_date' => 'required|date',
-            'end_date' => 'nullable|date',
+            'company_address' => 'required',
+            'work_start_date' => 'required|date',
+            'work_end_date' => 'nullable|date',
         ]);
 
         //Boleh guna cara ni kalau takda file upload
@@ -42,11 +42,11 @@ class WorkController extends Controller
     public function update(Request $request, WorkExperience $work)
     {
         $validate = $request->validate([
-            'position' => 'required',
+            'job_position' => 'required',
             'company_name' => 'required',
-            'location' => 'required',
-            'start_date' => 'required|date',
-            'end_date' => 'nullable|date',
+            'company_address' => 'required',
+            'work_start_date' => 'required|date',
+            'work_end_date' => 'nullable|date',
         ]);
 
         //Boleh guna cara ni kalau takda file upload
