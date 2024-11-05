@@ -94,16 +94,17 @@
                     Send Email
                 </button>
             </form>
-
         </div>
     </div>
 </div>
 
+<!-- Footer -->
 <div class="max-w-screen-xl mx-auto">
     <hr class="my-8 border-primary" />
 
     <div class="lg:flex lg:item-center">
         <p class='mx-auto text-sm text-center text-gray-300 max-lg:mt-4'>
+            &copy; 2024 Nizar Khan
         </p>
     </div>
 </div>

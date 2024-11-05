@@ -24,7 +24,7 @@ class PortfolioRequest extends FormRequest
         return [
             'project_title' => 'required',
             'project_description' => 'required',
-            'project_link' => 'required',
+            'project_link' => 'nullable|url',
             'project_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'skills' => 'array', // Validate that 'skills' is an array
             'skills.*' => 'integer|exists:skills,id', // Each skill ID should be an integer and exist in the skills table
@@ -36,7 +36,7 @@ class PortfolioRequest extends FormRequest
         return [
             'project_title.required' => 'Project title is required',
             'project_description.required' => 'Project description is required',
-            'project_link.required' => 'Project link is required',
+            'project_link.url' => 'Project link must be a valid URL',
             'project_image.image' => 'Project image must be an image',
             'project_image.mimes' => 'Project image must be a file of type: jpeg, png, jpg, gif, svg',
             'project_image.max' => 'Project image size must be less than 2MB',

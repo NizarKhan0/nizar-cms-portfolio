@@ -182,8 +182,7 @@
                         <input type="text" name="project_link" class="mb-2 form-control" placeholder="Project Link">
 
                         <h4>Select Skills</h4>
-                        <select class="choices form-select multiple-remove" id="skills{{ $skill->id }}"
-                            value="{{ $skill->id }}" multiple="multiple" name="skills[]">
+                        <select class="choices form-select multiple-remove" multiple="multiple" name="skills[]">
                             <optgroup label="Skills">
                                 @foreach ($skills as $skill)
                                     <option value="{{ $skill->id }}">{{ $skill->skill_name }}</option>
