@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -18,14 +19,9 @@ class ContactController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $validate = $request->validate([
-            'number_phone' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-            'contact_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        $request->validated();
 
         $image = $request->file('contact_logo');
         $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
@@ -34,24 +30,19 @@ class ContactController extends Controller
         $image->move(public_path('storage/uploads/contacts'), $imageName);
 
         // Create the new contact
-        $contact = Contact::create([
-            'number_phone' => $request->number_phone,
-            'email' => $request->email,
-            'address' => $request->address,
-            'contact_logo' => $imageName
-        ]);
+        $contact = new Contact();
+        $contact->number_phone = $request->number_phone;
+        $contact->email = $request->email;
+        $contact->address = $request->address;
+        $contact->contact_logo = $imageName;
+        $contact->save();
 
         return redirect()->route('contact.index')->with('success', 'Contact created successfully.');
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $validate = $request->validate([
-            'number_phone' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-            'contact_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        $request->validated();
 
         // Check if a new image has been uploaded
         if ($request->hasFile('contact_logo')) {
@@ -78,7 +69,7 @@ class ContactController extends Controller
         $contact->number_phone = $request->number_phone;
         $contact->email = $request->email;
         $contact->address = $request->address;
-        $contact->update();
+        $contact->save();
 
         // dd($contact);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServicesRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -20,27 +21,29 @@ class ServicesController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ServicesRequest $request)
     {
-        $validate = $request->validate([
-            'service_title' => 'required',
-            'service_description' => 'required',
-        ]);
+        $request->validated();
 
-
+        //Boleh guna cara ni kalau takda file upload
         Service::create($request->all());
         // dd($request->all());
+
+        // Create a new service instance
+        // $service = new Service();
+        // $service->service_title = $request->service_title;
+        // $service->service_description = $request->service_description; // Save the Quill content
+        // $service->save();
+        // dd($service);
 
         return redirect()->route('service.index')->with('success', 'Service created successfully');
     }
 
-    public function update(Request $request, Service $service)
+    public function update(ServicesRequest $request, Service $service)
     {
-        $validate = $request->validate([
-            'service_title' => 'required',
-            'service_description' => 'required',
-        ]);
+        $request->validated();
 
+        //Boleh guna cara ni kalau takda file upload
         $service->update($request->all());
 
         return redirect()->route('service.index')->with('success', 'Service updated successfully');

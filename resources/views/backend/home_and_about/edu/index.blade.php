@@ -37,9 +37,9 @@
                                     <td>{{ $education->institution_address }}</td>
                                     <td>
                                         @if ($education->education_end_date)
-                                            {{ $education->education_start_date }} - {{ $education->education_end_date }}
+                                            {{ \Carbon\Carbon::parse($education->education_start_date)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($education->education_end_date)->format('d/m/Y') }}
                                         @else
-                                            {{ $education->education_start_date }} - Present
+                                            {{ \Carbon\Carbon::parse($education->education_start_date)->format('d/m/Y') }} - Present
                                         @endif
                                     </td>
 

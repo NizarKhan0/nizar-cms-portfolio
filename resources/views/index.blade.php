@@ -41,9 +41,12 @@
     <!-- Portfolio Section End -->
 
     <!-- Services Section Start -->
-    <section id="services" class="pt-40 pb-32">
-        @include('partials.services')
-    </section>
+    @if (count($services) > 0)
+        <section id="services" class="pt-40 pb-32">
+            @include('partials.services')
+        </section>
+    @else
+    @endif
     <!-- Services Section End -->
 
     <!-- Footer Section Start -->

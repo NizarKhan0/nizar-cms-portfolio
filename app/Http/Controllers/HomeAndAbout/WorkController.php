@@ -5,6 +5,7 @@ namespace App\Http\Controllers\HomeAndAbout;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WorkExperienceRequest;
 
 class WorkController extends Controller
 {
@@ -20,34 +21,21 @@ class WorkController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(WorkExperienceRequest $request)
     {
-        $request->validate([
-            'job_position' => 'required',
-            'company_name' => 'nullable',
-            'company_address' => 'required',
-            'work_start_date' => 'required|date',
-            'work_end_date' => 'nullable|date',
-        ]);
+        $request->validated();
 
         //Boleh guna cara ni kalau takda file upload
-        $work = $request->all();
-        WorkExperience::create($work);
+        WorkExperience::create($request->all());
 
         // dd($work);
 
         return redirect()->route('work.index')->with('success', 'Work created successfully');
     }
 
-    public function update(Request $request, WorkExperience $work)
+    public function update(WorkExperienceRequest $request, WorkExperience $work)
     {
-        $validate = $request->validate([
-            'job_position' => 'required',
-            'company_name' => 'required',
-            'company_address' => 'required',
-            'work_start_date' => 'required|date',
-            'work_end_date' => 'nullable|date',
-        ]);
+        $request->validated();
 
         //Boleh guna cara ni kalau takda file upload
         $work->update($request->all());

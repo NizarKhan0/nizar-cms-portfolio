@@ -10,7 +10,7 @@ class Portfolio extends Model
         'project_title',
         'project_description',
         'project_link',
-        'project_image'
+        'project_image',
     ];
 
     public function skills()

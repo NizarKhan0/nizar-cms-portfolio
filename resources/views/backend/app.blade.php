@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="{{ asset('dist/assets/compiled/css/app-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/assets/compiled/css/iconly.css') }}">
 
+    {{-- Choices.js multiple select --}}
+    <link rel="stylesheet" href="{{ asset('dist/assets/extensions/choices.js/public/assets/styles/choices.css') }}">
+
+    {{-- Quill Editor --}}
+    <link rel="stylesheet" href="{{ asset('dist/assets/extensions/quill/quill.snow.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/assets/extensions/quill/quill.bubble.css') }}">
+
     {{-- Datatables --}}
     <link rel="stylesheet"
         href="{{ asset('dist/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
@@ -28,7 +35,6 @@
             </header>
 
             <div class="page-heading">
-                <h1>Welcome! {{ auth()->user()->name }}</h1>
                 <h3>{{ $title }}</h3>
             </div>
 
@@ -76,6 +82,15 @@
     <script src="{{ asset('dist/assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('dist/assets/static/js/pages/datatables.js') }}"></script>
+
+    <!-- Include Select2 JS -->
+    <script src="{{ asset('dist/assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+    <script src="{{ asset('dist/assets/static/js/pages/form-element-select.js') }}"></script>
+
+    <!-- Include Quill JS -->
+    <script src="{{ asset('dist/assets/extensions/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('dist/assets/static/js/pages/quill.js') }}"></script>
+
 </body>
 
 </html>

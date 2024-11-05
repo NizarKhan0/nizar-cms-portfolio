@@ -5,6 +5,7 @@ namespace App\Http\Controllers\HomeAndAbout;
 use App\Models\Education;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EducationRequest;
 
 class EducationController extends Controller
 {
@@ -19,32 +20,22 @@ class EducationController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(EducationRequest $request)
     {
-        $validate = $request->validate([
-            'education_name' => 'required',
-            'institution_name' => 'required',
-            'institution_address' => 'required',
-            'education_start_date' => 'required|date',
-            'education_end_date' => 'nullable|date',
-        ]);
+        $request->validated();
 
         //Boleh guna cara ni kalau takda file upload
-        $education = $request->all();
-        Education::create($education);
+        // $education = $request->all();
+        // Education::create($education);
+
+        Education::create($request->all());
 
         return redirect()->route('education.index')->with('success', 'Education created successfully');
     }
 
-    public function update(Request $request, Education $education)
+    public function update(EducationRequest $request, Education $education)
     {
-        $validate = $request->validate([
-            'education_name' => 'required',
-            'institution_name' => 'required',
-            'institution_address' => 'required',
-            'education_start_date' => 'required|date',
-            'education_end_date' => 'nullable|date',
-        ]);
+        $request->validated();
 
         //Boleh guna cara ni kalau takda file upload
         $education->update($request->all());

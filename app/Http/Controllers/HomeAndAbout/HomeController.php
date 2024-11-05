@@ -4,6 +4,7 @@ namespace App\Http\Controllers\HomeAndAbout;
 
 use App\Models\Home;
 use Illuminate\Http\Request;
+use App\Http\Requests\HomeRequest;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -19,53 +20,42 @@ class HomeController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(HomeRequest $request)
     {
-        $request->validate([
-            'job_title' => 'required',
-            'intro' => 'required',
-            'description' => 'required',
-            'cta_link' => 'required',
-            'cta_text' => 'required',
-            'nizar_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        // Validate the request data
+        $request->validated();
 
+        // Process the image file
         $image = $request->file('nizar_image');
-        $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
+        $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name
         $extension = $image->getClientOriginalExtension(); // Get the file extension
-        $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
-        $image->move(public_path('storage/uploads/nizar'), $imageName);
+        $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append unique ID to the original name
+        $image->move(public_path('storage/uploads/nizar'), $imageName); // Move file to storage path
 
-        $home = Home::create([
-            'job_title' => $request->job_title,
-            'intro' => $request->intro,
-            'description' => $request->description,
-            'cta_link' => $request->cta_link,
-            'cta_text' => $request->cta_text,
-            'nizar_image' => $imageName
-        ]);
+        // Create new Home instance and save data
+        $home = new Home();
+        $home->job_title = $request->job_title;
+        $home->intro = $request->intro;
+        $home->description = $request->description;
+        $home->cta_link = $request->cta_link;
+        $home->cta_text = $request->cta_text;
+        $home->nizar_image = $imageName;
+        $home->save();
 
-        // dd($home);
-
+        // Redirect back with success message
         return redirect()->route('home.index')->with('success', 'Home created successfully');
     }
 
-    public function update(Home $home, Request $request)
+    public function update(Home $home, HomeRequest $request)
     {
-        $request->validate([
-            'job_title' => 'required',
-            'intro' => 'required',
-            'description' => 'required',
-            'cta_link' => 'required',
-            'cta_text' => 'required',
-            'nizar_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        // Validate the request data
+        $request->validated();
 
         // Check if a new image has been uploaded
         if ($request->hasFile('nizar_image')) {
             // Delete the old image if it exists
             if ($home->nizar_image) {
-                $oldImagePath = public_path('storage/uploads/nizar/' . $home->image_path);
+                $oldImagePath = public_path('storage/uploads/nizar/' . $home->nizar_image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Delete the old image file
                 }
@@ -75,7 +65,7 @@ class HomeController extends Controller
             $image = $request->file('nizar_image');
             $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
             $extension = $image->getClientOriginalExtension(); // Get the file extension
-            $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
+            $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append unique ID to the original name
             $image->move(public_path('storage/uploads/nizar'), $imageName); // Save the new image
 
             // Update the image path in the database
@@ -88,11 +78,11 @@ class HomeController extends Controller
         $home->description = $request->description;
         $home->cta_link = $request->cta_link;
         $home->cta_text = $request->cta_text;
-        $home->update();
-        // $home->save();
+        $home->save(); // Save the changes to the database
 
         return redirect()->route('home.index')->with('success', 'Home updated successfully');
     }
+
 
     public function destroy(Home $home)
     {

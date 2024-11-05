@@ -35,11 +35,12 @@
                                         <td>{{ $work->company_name }}</td>
                                     @endif
                                     <td>{{ $work->company_address }}</td>
+
                                     <td>
                                         @if ($work->work_end_date)
-                                            {{ $work->work_start_date }} - {{ $work->work_end_date }}
+                                            {{ \Carbon\Carbon::parse($work->work_start_date)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($work->work_end_date)->format('d/m/Y') }}
                                         @else
-                                            {{ $work->work_start_date }} - Present
+                                            {{ \Carbon\Carbon::parse($work->work_start_date)->format('d/m/Y') }} - Present
                                         @endif
                                     </td>
 

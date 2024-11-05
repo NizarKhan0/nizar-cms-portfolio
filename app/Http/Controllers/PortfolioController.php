@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Skill;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use App\Http\Requests\PortfolioRequest;
 
 class PortfolioController extends Controller
 {
@@ -21,60 +23,57 @@ class PortfolioController extends Controller
         // dd($portfolio);
         // dd($portfolio->skills);
 
+        // Prepare an array to hold selected skills for each portfolio
+        $portfolioSkills = $portfolio->map(function ($portfolio) {
+            return [
+                'portfolio_id' => $portfolio->id,
+                'selectedSkills' => $portfolio->skills->pluck('id')->toArray(), // Fetch selected skill IDs for this portfolio
+            ];
+        });
+
         return view('backend.portfolio.index', [
             'title' => $title,
             'portfolios' => $portfolio,
-            'skills' => $skill
+            'skills' => $skill,
+            'portfolioSkills' => $portfolioSkills, // Pass the selected skills to the view
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PortfolioRequest $request)
     {
-        $validate = $request->validate([
-            'project_title' => 'required',
-            'project_description' => 'required',
-            'project_link' => 'required',
-            'project_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'skills' => 'array', // Validate that 'skills' is an array of selected skill IDs
-        ]);
+        // Validate the request
+        $request->validated();
 
-        //Boleh guna cara ni kalau takda file upload
-        // $portfolio = $request->all();
-        // Portfolio::create($portfolio);
+        // Handle file upload for project image
+        if ($request->hasFile('project_image')) {
+            $image = $request->file('project_image');
+            $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
+            $extension = $image->getClientOriginalExtension(); // Get the file extension
+            $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
+            $image->move(public_path('storage/uploads/projects'), $imageName);
+        }
 
-        $image = $request->file('project_image');
-        $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
-        $extension = $image->getClientOriginalExtension(); // Get the file extension
-        $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append uniqid to the original name
-        $image->move(public_path('storage/uploads/projects'), $imageName);
+        // Create the new portfolio with the uploaded image name
+        $portfolio = new Portfolio();
+        $portfolio->project_title = $request->project_title;
+        $portfolio->project_description = $request->project_description;
+        $portfolio->project_link = $request->project_link;
+        $portfolio->project_image = $imageName;
+        $portfolio->save();
 
-
-        // Create the new portfolio
-        $portfolio = Portfolio::create([
-            'project_title' => $request->project_title,
-            'project_description' => $request->project_description,
-            'project_link' => $request->project_link,
-            'project_image' => $imageName
-        ]);
-
-        // Attach the selected skills to the portfolio
+        // Attach the selected unique skills to the portfolio
         if ($request->has('skills')) {
-            $uniqueSkills = array_unique($request->skills);
+            $uniqueSkills = array_unique($request->skills); // Remove duplicate skill IDs
             $portfolio->skills()->attach($uniqueSkills);
         }
 
         return redirect()->route('portfolio.index')->with('success', 'Portfolio created successfully');
     }
 
-    public function update(Request $request, Portfolio $portfolio)
+
+    public function update(PortfolioRequest $request, Portfolio $portfolio)
     {
-        $validate = $request->validate([
-            'project_title' => 'required',
-            'project_description' => 'required',
-            'project_link' => 'required',
-            'project_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'skills' => 'array', // Validate that 'skills' is an array of selected skill IDs
-        ]);
+        $request->validated();
 
         //Boleh guna cara ni kalau takda file upload
         // $portfolio->update($request->all());
@@ -109,14 +108,13 @@ class PortfolioController extends Controller
         $portfolio->project_title = $request->project_title;
         $portfolio->project_description = $request->project_description;
         $portfolio->project_link = $request->project_link;
-        $portfolio->update();
+        $portfolio->save();
 
         // Attach the selected skills to the portfolio
         if ($request->has('skills')) {
             $uniqueSkills = array_unique($request->skills);
             $portfolio->skills()->sync($uniqueSkills);
         }
-
         return redirect()->route('portfolio.index')->with('success', 'Portfolio updated successfully');
     }
 

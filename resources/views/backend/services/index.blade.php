@@ -31,7 +31,7 @@
                                 <tr>
                                     {{-- <td>{{ $service->main_title }}</td> --}}
                                     <td>{{ $service->service_title }}</td>
-                                    <td>{{ $service->service_description }}</td>
+                                    <td>{!! $service->service_description !!}</td>
                                     <td>
                                         <!-- Trigger Edit Modal -->
                                         <button class="m-2 btn btn-light-primary" data-bs-toggle="modal"
@@ -56,7 +56,18 @@
                                                             <input type="text" name="service_title"
                                                                 class="mb-2 form-control" placeholder="Service Title"
                                                                 value="{{ $service->service_title }}" required>
-                                                            <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description" required>{{ $service->service_description }}</textarea>
+
+                                                            <!-- Create the editor container -->
+                                                            <div id="service_description_edit" name="service_description">
+                                                                {!! old('service_description', $service->service_description) !!}
+                                                                <!-- Populate the editor with existing content -->
+                                                            </div>
+
+                                                            <!-- Hidden input to store Quill content -->
+                                                            <input type="hidden" name="service_description"
+                                                                id="service_description_input">
+
+                                                            {{-- <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description" required>{{ $service->service_description }}</textarea> --}}
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -117,7 +128,7 @@
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="{{ route('service.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('service.store') }}" method="POST" enctype="multipart/form-data" id="serviceForm">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="addModalLabel">Add New Service</h5>
@@ -127,7 +138,17 @@
                         <!-- Add form fields -->
                         <input type="text" name="service_title" class="mb-2 form-control" placeholder="Service Title"
                             required>
-                        <textarea name="service_description" class="mb-2 form-control" required></textarea>
+
+                        <!-- Create the editor container -->
+                        <div id="service_description" name="service_description">
+
+                        </div>
+
+                        <!-- Hidden input to store Quill content -->
+                        <input type="hidden" name="service_description" id="service_description_input">
+
+                        {{-- <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description"
+                            required></textarea> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

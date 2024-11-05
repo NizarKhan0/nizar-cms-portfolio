@@ -1,6 +1,9 @@
 @extends('backend.app')
 
 @section('content')
+
+    <h1>Welcome! {{ auth()->user()->name }}</h1>
+
     <section class="row">
         <div class="col-12 col-lg-9">
             <div class="row">

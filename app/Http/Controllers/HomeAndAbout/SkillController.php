@@ -5,6 +5,7 @@ namespace App\Http\Controllers\HomeAndAbout;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SkillRequest;
 
 class SkillController extends Controller
 {
@@ -19,30 +20,21 @@ class SkillController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
-        $validate = $request->validate([
-            'skill_name' => 'required',
-            'percentage' => 'required',
-            'color_code' => 'required',
-        ]);
+        $request->validated();
 
         //Boleh guna cara ni kalau takda file upload
-        $skill = $request->all();
-        Skill::create($skill);
+        Skill::create($request->all());
 
         return redirect()->route('skill.index')->with('success', 'Skill created successfully');
     }
 
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
     {
-        $validate = $request->validate([
-            'skill_name' => 'required',
-            'percentage' => 'required',
-            'color_code' => 'required',
-        ]);
+        $request->validated();
 
-        //Boleh guna cara ni kalau takda file upload
+        //Boleh guna cara ni kalau takda file upload ($skill tu dari route model binding)
         $skill->update($request->all());
 
         return redirect()->route('skill.index')->with('success', 'Skill updated successfully');

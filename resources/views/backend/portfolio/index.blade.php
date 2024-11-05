@@ -95,15 +95,17 @@
                                                                 value="{{ $portfolio->project_link }}">
 
                                                             <h4>Select Skills</h4>
-                                                            @foreach ($skills as $skill)
-                                                                <div>
-                                                                    <input type="checkbox" id="skill{{ $skill->id }}"
-                                                                        name="skills[]" value="{{ $skill->id }}"
-                                                                        {{ in_array($skill->id, $portfolio->skills->pluck('id')->toArray()) ? 'checked' : '' }}>
-                                                                    <label
-                                                                        for="skill{{ $skill->id }}">{{ $skill->skill_name }}</label>
-                                                                </div>
-                                                            @endforeach
+                                                            <select class="choices form-select multiple-remove"
+                                                                id="skills" multiple="multiple" name="skills[]">
+                                                                <optgroup label="Skills">
+                                                                    @foreach ($skills as $skill)
+                                                                        <option value="{{ $skill->id }}"
+                                                                            @if (in_array($skill->id, $portfolioSkills->firstWhere('portfolio_id', $portfolio->id)['selectedSkills'])) selected @endif>
+                                                                            {{ $skill->skill_name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </optgroup>
+                                                            </select>
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -180,18 +182,19 @@
                         <input type="text" name="project_link" class="mb-2 form-control" placeholder="Project Link">
 
                         <h4>Select Skills</h4>
-                        @foreach ($skills as $skill)
-                            <div>
-                                <input type="checkbox" id="skill{{ $skill->id }}" name="skills[]"
-                                    value="{{ $skill->id }}">
-                                <label for="skill{{ $skill->id }}">{{ $skill->skill_name }}</label>
-                            </div>
-                        @endforeach
+                        <select class="choices form-select multiple-remove" id="skills{{ $skill->id }}"
+                            value="{{ $skill->id }}" multiple="multiple" name="skills[]">
+                            <optgroup label="Skills">
+                                @foreach ($skills as $skill)
+                                    <option value="{{ $skill->id }}">{{ $skill->skill_name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
 
                         <div class="m-3">
                             <label for="project_image">Upload New Project Image:</label>
                             <input type="file" name="project_image" class="mb-2 form-control"
-                                placeholder="Upload Image" accept="image/*">
+                                placeholder="Upload Image" accept="image/*" required>
                         </div>
 
                     </div>
