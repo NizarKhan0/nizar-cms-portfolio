@@ -4,15 +4,17 @@
 
 @section('content')
 
-
     <!-- Basic Tables start -->
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">
-                    <!-- Trigger Add Modal -->
-                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
-                </h5>
+                <div class="d-flex mb-3">
+                    <div class="p-2"><button class="m-2 btn btn-light-success" data-bs-toggle="modal"
+                            data-bs-target="#addModal"><i class="bi bi-pencil"></i></button></div>
+                    <div class="ms-auto p-2"> <a href="{{ route('feature.index') }}" class="btn btn-light-primary"
+                            target="_blank">Features Section</a>
+                    </div>
+                </div>
                 {{-- <h5>Main Title : {{ $serviceMainTitle }}</h5> --}}
             </div>
             <div class="card-body">
@@ -21,21 +23,30 @@
                         <thead>
                             <tr>
                                 {{-- <th>Main Title</th> --}}
-                                <th>Services</th>
-                                <th>Description</th>
+                                <th>Services Package</th>
+                                <th>Services Description</th>
+                                <th>Services Price</th>
+                                <th>Services Featured</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($services as $service)
                                 <tr>
-                                    {{-- <td>{{ $service->main_title }}</td> --}}
-                                    <td>{{ $service->service_title }}</td>
-                                    <td>{!! $service->service_description !!}</td>
+                                    <td>{{ $service->service_package }}</td>
+                                    <td>{{ $service->service_description }}</td>
+                                    <td>${{ $service->service_price }}</td>
+                                    <td>
+                                        @foreach ($service->features as $feature)
+                                            <span class="badge bg-light-primary">{{ $feature->feature_name }}</span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <!-- Trigger Edit Modal -->
                                         <button class="m-2 btn btn-light-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editModal-{{ $service->id }}">Edit</button>
+                                            data-bs-target="#editModal-{{ $service->id }}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
 
                                         <!-- Edit Modal -->
                                         <div class="modal fade" id="editModal-{{ $service->id }}" tabindex="-1"
@@ -53,21 +64,29 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Edit form fields -->
-                                                            <input type="text" name="service_title"
+                                                            <input type="text" name="service_package"
                                                                 class="mb-2 form-control" placeholder="Service Title"
-                                                                value="{{ $service->service_title }}" required>
+                                                                value="{{ $service->service_package }}" required>
 
-                                                            <!-- Create the editor container -->
-                                                            <div id="service_description_edit" name="service_description">
-                                                                {!! old('service_description', $service->service_description) !!}
-                                                                <!-- Populate the editor with existing content -->
-                                                            </div>
+                                                            <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description" required>{{ $service->service_description }}</textarea>
 
-                                                            <!-- Hidden input to store Quill content -->
-                                                            <input type="hidden" name="service_description"
-                                                                id="service_description_input">
+                                                            <input type="number" name="service_price"
+                                                                class="mb-2 form-control" placeholder="Service Price"
+                                                                value="{{ $service->service_price }}" required>
 
-                                                            {{-- <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description" required>{{ $service->service_description }}</textarea> --}}
+                                                            <h4>Select Features</h4>
+                                                            <select class="choices form-select multiple-remove"
+                                                                multiple="multiple" name="features[]">
+                                                                <optgroup label="Features">
+                                                                    @foreach ($features as $feature)
+                                                                        <option value="{{ $feature->id }}"
+                                                                            {{ $service->features->contains($feature->id) ? 'selected' : '' }}>
+                                                                            {{ $feature->feature_name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </optgroup>
+                                                            </select>
+
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
@@ -82,7 +101,9 @@
 
                                         <!-- Trigger Delete Modal -->
                                         <button class="m-2 btn btn-light-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal-{{ $service->id }}">Delete</button>
+                                            data-bs-target="#deleteModal-{{ $service->id }}">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
 
                                         <!-- Delete Modal -->
                                         <div class="modal fade" id="deleteModal-{{ $service->id }}" tabindex="-1"
@@ -136,19 +157,23 @@
                     </div>
                     <div class="modal-body">
                         <!-- Add form fields -->
-                        <input type="text" name="service_title" class="mb-2 form-control" placeholder="Service Title"
+                        <input type="text" name="service_package" class="mb-2 form-control"
+                            placeholder="Service Package" required>
+
+                        <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description" required></textarea>
+
+                        <input type="number" name="service_price" class="mb-2 form-control" placeholder="Service Price"
                             required>
 
-                        <!-- Create the editor container -->
-                        <div id="service_description" name="service_description">
+                        <h4>Select Features</h4>
+                        <select class="choices form-select multiple-remove" multiple="multiple" name="features[]">
+                            <optgroup label="Features">
+                                @foreach ($features as $feature)
+                                    <option value="{{ $feature->id }}">{{ $feature->feature_name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
 
-                        </div>
-
-                        <!-- Hidden input to store Quill content -->
-                        <input type="hidden" name="service_description" id="service_description_input">
-
-                        {{-- <textarea name="service_description" class="mb-2 form-control" placeholder="Service Description"
-                            required></textarea> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

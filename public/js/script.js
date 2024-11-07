@@ -109,6 +109,42 @@ const swiper = new Swiper(".mySwiper", {
     },
 });
 
+//Swiper JS
+const swiper2 = new Swiper(".mySwiper2", {
+    slidesPerView: 3,
+    spaceBetween: 28,
+    centeredSlides: true,
+    loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        type: "fraction",
+        formatFractionCurrent: function (number) {
+            return number;
+        },
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            centeredSlides: false,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 28,
+            centeredSlides: true,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 32,
+        },
+    },
+});
+
 //Hamburger
 var toggleOpen = document.getElementById("toggleOpen");
 var toggleClose = document.getElementById("toggleClose");
@@ -157,18 +193,18 @@ navbarLinks.forEach(function (link) {
 let mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

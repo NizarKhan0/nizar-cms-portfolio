@@ -10,7 +10,8 @@
             <div class="card-header">
                 <h5 class="card-title">
                     <!-- Trigger Add Modal -->
-                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
+                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal"> <i
+                            class="bi bi-pencil"></i></button>
                 </h5>
             </div>
             <div class="card-body">
@@ -38,7 +39,8 @@
 
                                     <td>
                                         @if ($work->work_end_date)
-                                            {{ \Carbon\Carbon::parse($work->work_start_date)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($work->work_end_date)->format('d/m/Y') }}
+                                            {{ \Carbon\Carbon::parse($work->work_start_date)->format('d/m/Y') }} -
+                                            {{ \Carbon\Carbon::parse($work->work_end_date)->format('d/m/Y') }}
                                         @else
                                             {{ \Carbon\Carbon::parse($work->work_start_date)->format('d/m/Y') }} - Present
                                         @endif
@@ -47,7 +49,9 @@
                                     <td>
                                         <!-- Trigger Edit Modal -->
                                         <button class="m-2 btn btn-light-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editModal-{{ $work->id }}">Edit</button>
+                                            data-bs-target="#editModal-{{ $work->id }}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
 
                                         <!-- Edit Modal -->
                                         <div class="modal fade" id="editModal-{{ $work->id }}" tabindex="-1"
@@ -65,17 +69,20 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Edit form fields -->
-                                                            <input type="text" name="job_position" class="mb-2 form-control"
-                                                                value="{{ $work->job_position }}" required>
+                                                            <input type="text" name="job_position"
+                                                                class="mb-2 form-control" value="{{ $work->job_position }}"
+                                                                required>
                                                             <input type="text" name="company_name"
                                                                 class="mb-2 form-control"
                                                                 value="{{ $work->company_name }}">
-                                                            <input type="text" name="company_address" class="mb-2 form-control"
+                                                            <input type="text" name="company_address"
+                                                                class="mb-2 form-control"
                                                                 value="{{ $work->company_address }}" required>
                                                             <input type="date" name="work_start_date"
-                                                                class="mb-3 form-control" value="{{ $work->work_start_date }}"
-                                                                required>
-                                                            <input type="date" name="work_end_date" class="mb-3 form-control"
+                                                                class="mb-3 form-control"
+                                                                value="{{ $work->work_start_date }}" required>
+                                                            <input type="date" name="work_end_date"
+                                                                class="mb-3 form-control"
                                                                 value="{{ $work->work_end_date }}">
                                                         </div>
                                                         <div class="modal-footer">
@@ -91,7 +98,9 @@
 
                                         <!-- Trigger Delete Modal -->
                                         <button class="m-2 btn btn-light-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal-{{ $work->id }}">Delete</button>
+                                            data-bs-target="#deleteModal-{{ $work->id }}">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
 
                                         <!-- Delete Modal -->
                                         <div class="modal fade" id="deleteModal-{{ $work->id }}" tabindex="-1"
@@ -143,12 +152,15 @@
                     </div>
                     <div class="modal-body">
                         <!-- Add form fields -->
-                        <input type="text" name="job_position" class="mb-2 form-control" placeholder="Job Position" required>
-                        <input type="text" name="company_name" class="mb-2 form-control" placeholder="Company Name">
-                        <input type="text" name="company_address" class="mb-2 form-control" placeholder="Company Address" required>
-                        <input type="date" name="work_start_date" class="mb-3 form-control" placeholder="Select date.."
+                        <input type="text" name="job_position" class="mb-2 form-control" placeholder="Job Position"
                             required>
-                        <input type="date" name="work_end_date" class="mb-3 form-control" placeholder="Select date..">
+                        <input type="text" name="company_name" class="mb-2 form-control" placeholder="Company Name">
+                        <input type="text" name="company_address" class="mb-2 form-control"
+                            placeholder="Company Address" required>
+                        <input type="date" name="work_start_date" class="mb-3 form-control"
+                            placeholder="Select date.." required>
+                        <input type="date" name="work_end_date" class="mb-3 form-control"
+                            placeholder="Select date..">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

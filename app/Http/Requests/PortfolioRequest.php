@@ -26,8 +26,8 @@ class PortfolioRequest extends FormRequest
             'project_description' => 'required',
             'project_link' => 'nullable|url',
             'project_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'skills' => 'array', // Validate that 'skills' is an array
-            'skills.*' => 'integer|exists:skills,id', // Each skill ID should be an integer and exist in the skills table
+            'skills' => 'nullable|array', // Validate that 'skills' is an array
+            'skills.*' => 'nullable|integer|exists:skills,id', // Each skill ID should be an integer and exist in the skills table
         ];
     }
 

@@ -10,7 +10,8 @@
             <div class="card-header">
                 <h5 class="card-title">
                     <!-- Trigger Add Modal -->
-                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
+                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal"> <i
+                            class="bi bi-pencil"></i></button>
                 </h5>
             </div>
             <div class="card-body">
@@ -48,7 +49,9 @@
                                     <td>
                                         <!-- Trigger Edit Modal -->
                                         <button class="m-2 btn btn-light-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editModal-{{ $portfolio->id }}">Edit</button>
+                                            data-bs-target="#editModal-{{ $portfolio->id }}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
 
                                         <!-- Edit Modal -->
                                         <div class="modal fade" id="editModal-{{ $portfolio->id }}" tabindex="-1"
@@ -94,13 +97,26 @@
                                                                 class="mb-2 form-control" placeholder="Project Link"
                                                                 value="{{ $portfolio->project_link }}">
 
-                                                            <h4>Select Skills</h4>
+                                                            {{-- <h4>Select Skills</h4>
                                                             <select class="choices form-select multiple-remove"
                                                                 id="skills" multiple="multiple" name="skills[]">
                                                                 <optgroup label="Skills">
                                                                     @foreach ($skills as $skill)
                                                                         <option value="{{ $skill->id }}"
                                                                             @if (in_array($skill->id, $portfolioSkills->firstWhere('portfolio_id', $portfolio->id)['selectedSkills'])) selected @endif>
+                                                                            {{ $skill->skill_name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </optgroup>
+                                                            </select> --}}
+
+                                                            <h4>Select Skills</h4>
+                                                            <select class="choices form-select multiple-remove"
+                                                                id="skills" multiple="multiple" name="skills[]">
+                                                                <optgroup label="Skills">
+                                                                    @foreach ($skills as $skill)
+                                                                        <option value="{{ $skill->id }}"
+                                                                            {{ $portfolio->skills->contains($skill->id) ? 'selected' : '' }}>
                                                                             {{ $skill->skill_name }}
                                                                         </option>
                                                                     @endforeach
@@ -121,7 +137,9 @@
 
                                         <!-- Trigger Delete Modal -->
                                         <button class="m-2 btn btn-light-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal-{{ $portfolio->id }}">Delete</button>
+                                            data-bs-target="#deleteModal-{{ $portfolio->id }}">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
 
                                         <!-- Delete Modal -->
                                         <div class="modal fade" id="deleteModal-{{ $portfolio->id }}" tabindex="-1"

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FeaturesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomePageController;
@@ -75,6 +76,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/service', 'store')->name('service.store');
         Route::put('/service/{service}', 'update')->name('service.update');
         Route::delete('/service/{service}', 'destroy')->name('service.destroy');
+    });
+
+    //Features
+    Route::controller(FeaturesController::class)->group(function () {
+        Route::get('/feature', 'index')->name('feature.index');
+        Route::post('/feature', 'store')->name('feature.store');
+        Route::delete('/feature/{feature}', 'destroy')->name('feature.destroy');
     });
 
     //Contacts

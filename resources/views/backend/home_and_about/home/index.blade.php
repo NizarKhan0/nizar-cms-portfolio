@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- Trigger Add Modal -->
-    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
+    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal"><i class="bi bi-pencil"></i></button>
 
     <section class="section">
         <div class="container">
@@ -34,10 +34,15 @@
                             <div class="m-3 card-footer d-flex justify-content-around">
                                 <!-- Trigger Edit Modal -->
                                 <button class="m-2 btn btn-light-primary" data-bs-toggle="modal"
-                                    data-bs-target="#editModal-{{ $home->id }}">Edit</button>
+                                    data-bs-target="#editModal-{{ $home->id }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+
                                 <!-- Trigger Delete Modal -->
                                 <button class="m-2 btn btn-light-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal-{{ $home->id }}">Delete</button>
+                                    data-bs-target="#deleteModal-{{ $home->id }}">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
                             </div>
                         </div>
 

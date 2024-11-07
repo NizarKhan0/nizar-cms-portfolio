@@ -1,4 +1,4 @@
-<h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary">Services</h1>
+<h1 class="mb-16 text-3xl font-bold text-center uppercase text-primary">Services</h1>
 <div class="font-[sans-serif]">
     <div class="max-w-6xl px-4 py-6 mx-auto">
 
@@ -6,15 +6,28 @@
 
         <!-- <div class="grid grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3 max-md:max-w-md"> -->
         <!--Slider wrapper-->
-        <div class="text-center swiper mySwiper">
+        <div class="text-center swiper mySwiper2">
             <div class="swiper-wrapper">
 
                 @foreach ($services as $service)
                     <div
                         class="overflow-hidden transition-all shadow-md bg-secondary swiper-slide rounded-2xl hover:shadow-lg">
                         <div class="p-8">
-                            <h3 class="mb-3 text-xl font-semibold text-white">{{ $service->service_title }}</h3>
-                            <p class="text-sm leading-relaxed text-slate-300">{!! $service->service_description !!}</p>
+                            <h3 class="mb-3 text-xl font-semibold text-white">{{ $service->service_package }}</h3>
+                            <p class="text-sm leading-relaxed text-slate-300">{{ $service->service_description }}</p>
+                            <h3 class="mb-3 text-xl font-semibold text-white">${{ $service->service_price }}</h3>
+                            <ul class="text-sm text-slate-300">
+                                {{-- relation service dengan feature tengok dekat model --}}
+                                @foreach ($service->features as $feature)
+                                    <li><i class="fa fa-check text-white"></i> {{ $feature->feature_name }} </li>
+                                @endforeach
+                            </ul>
+                            <a href="https://wa.me/60187898521" target="_blank">
+                                <button
+                                    class="mt-4 bg-primary text-white font-semibold py-2 px-4 rounded-full hover:bg-primary-dark">
+                                    Order Now
+                                </button>
+                            </a>
                         </div>
                     </div>
                 @endforeach

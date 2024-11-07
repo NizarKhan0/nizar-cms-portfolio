@@ -9,6 +9,10 @@
     <title>Nizar Khan - Portfolio</title>
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -16,44 +20,17 @@
 </head>
 
 <style>
-    #myBtn {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Fixed/sticky position */
-        bottom: 20px;
-        /* Place the button at the bottom of the page */
-        right: 30px;
-        /* Place the button 30px from the right */
-        z-index: 99;
-        /* Make sure it does not overlap */
-        border: none;
-        /* Remove borders */
-        outline: none;
-        /* Remove outline */
-        background-color: white;
-        /* Set a background color */
-        color: black;
-        /* Text color */
-        cursor: pointer;
-        /* Add a mouse pointer on hover */
-        padding: 10px;
-        /* Some padding */
-        border-radius: 10px;
-        /* Rounded corners */
-        font-size: 18px;
-        /* Increase font size */
-    }
-
-    #myBtn:hover {
-        background-color: teal;
-        /* Add a dark-grey background on hover */
+    .swiper-slide {
+        height: auto;
+        /* ... other styles from the provided code ... */
     }
 </style>
 
 <body class="bg-black">
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <i class="fas fa-angle-up"></i>
+    </button>
 
     <!-- Header Section Start -->
     <header class='sticky top-0 flex border-b py-4 px-4 sm:px-10 bg-black font-sans min-h-[70px] tracking-wide z-50'>

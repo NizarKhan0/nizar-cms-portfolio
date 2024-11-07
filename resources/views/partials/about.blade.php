@@ -60,20 +60,25 @@
                             <path d="M3 19h18"></path>
                         </svg>
                     </div> --}}
+                    <div class="p-3 bg-white rounded-full">
+                        <i class="fas fa-building" style="font-size:24px"></i>
+                    </div>
                     <!-- Job Information -->
                     <div class="text-center text-secondary">
                         <h4 class="text-xl font-bold text-third">{{ $work->job_position }}</h4>
                         @if ($work->company_name == null)
                             {{ $work->company_address }}
                         @else
-                            <p class="text-sm font-semibold">{{ $work->company_name }} - {{ $work->company_address }}</p>
+                            <p class="text-sm font-semibold">{{ $work->company_name }} - {{ $work->company_address }}
+                            </p>
                         @endif
 
                         @if ($work->work_end_date)
                             <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->work_start_date)) }} -
                                 {{ date('F Y', strtotime($work->work_end_date)) }}</p>
                         @else
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->work_start_date)) }} - Present
+                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($work->work_start_date)) }} -
+                                Present
                             </p>
                         @endif
                     </div>
@@ -92,17 +97,9 @@
                 <!-- Education Item-->
                 <div class="flex flex-col items-center space-y-2">
                     <!-- Icon -->
-                    {{-- <div class="p-3 bg-teal-600 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <!-- Mortarboard (cap) -->
-                        <path d="M12 2L3 8l9 6 9-6-9-6z" /> <!-- Top part of the cap -->
-                        <path d="M3 8v6c0 1.5 4.5 4 9 4s9-2.5 9-4V8" /> <!-- Bottom part with tassel string -->
-                        <!-- Tassel -->
-                        <path d="M12 12v6" /> <!-- Tassel hanging down -->
-                    </svg>
-                </div> --}}
+                    <div class="p-3 bg-white rounded-full">
+                        <i class="fa fa-graduation-cap" style="font-size:24px"></i>
+                    </div>
                     <!-- Education Information -->
                     <div class="text-center text-secondary">
                         <h4 class="text-xl font-bold text-third">{{ $education->education_name }}</h4>
@@ -110,10 +107,12 @@
                             {{ $education->institution_address }}
                         </p>
                         @if ($education->education_end_date)
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->education_start_date)) }} -
+                            <p class="text-sm font-semibold">
+                                {{ date('F Y', strtotime($education->education_start_date)) }} -
                                 {{ date('F Y', strtotime($education->education_end_date)) }}</p>
                         @else
-                            <p class="text-sm font-semibold">{{ date('F Y', strtotime($education->education_start_date)) }} -
+                            <p class="text-sm font-semibold">
+                                {{ date('F Y', strtotime($education->education_start_date)) }} -
                                 Present</p>
                         @endif
                     </div>

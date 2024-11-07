@@ -24,6 +24,7 @@ class PortfolioController extends Controller
         // dd($portfolio->skills);
 
         // Prepare an array to hold selected skills for each portfolio
+        //Untuk proses update/edit
         $portfolioSkills = $portfolio->map(function ($portfolio) {
             return [
                 'portfolio_id' => $portfolio->id,
@@ -62,10 +63,28 @@ class PortfolioController extends Controller
         $portfolio->save();
 
         // Attach the selected unique skills to the portfolio
+        //untuk dapatkan data bila store klau xde, relationship dia pun xde
+
+        // if ($request->has('skills')) {
+        //     $uniqueSkills = array_unique($request->skills); // Remove duplicate skill IDs
+        //     $portfolio->skills()->attach($uniqueSkills);
+        // }
         if ($request->has('skills')) {
             $uniqueSkills = array_unique($request->skills); // Remove duplicate skill IDs
-            $portfolio->skills()->attach($uniqueSkills);
+
+            // Prepare the pivot data with timestamps
+            $pivotData = [];
+            foreach ($uniqueSkills as $skillId) {
+                $pivotData[$skillId] = [
+                    'created_at' => now(),  // Set created_at timestamp
+                    'updated_at' => now(),  // Set updated_at timestamp
+                ];
+            }
+
+            // Attach the skills with timestamps to the portfolio
+            $portfolio->skills()->attach($pivotData);
         }
+
 
         return redirect()->route('portfolio.index')->with('success', 'Portfolio created successfully');
     }
@@ -108,13 +127,22 @@ class PortfolioController extends Controller
         $portfolio->project_title = $request->project_title;
         $portfolio->project_description = $request->project_description;
         $portfolio->project_link = $request->project_link;
+
         $portfolio->save();
 
-        // Attach the selected skills to the portfolio
-        if ($request->has('skills')) {
+        // Check if features are provided and sync them
+        if ($request->has('skills') && is_array($request->skills)) {
+
+            // Remove duplicates from the skills array
             $uniqueSkills = array_unique($request->skills);
+
+            // If the skills array is empty, it will remove all associated skills from the portfolio
             $portfolio->skills()->sync($uniqueSkills);
+        } else {
+            // If no skills are selected, remove all skills associated with the portfolio (empty the array)
+            $portfolio->skills()->sync([]);
         }
+
         return redirect()->route('portfolio.index')->with('success', 'Portfolio updated successfully');
     }
 

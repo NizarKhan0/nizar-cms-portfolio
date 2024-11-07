@@ -82,6 +82,18 @@
                 </a>
             </li>
 
+            {{-- <li class="sidebar-item has-sub">
+                <a href="{{ route('service.index') }}" class='sidebar-link'>
+                    <i class="bi bi-gear-fill"></i>
+                    <span>Services</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="{{ route('features.index') }}" class="submenu-link">Features</a>
+                    </li>
+                </ul>
+            </li> --}}
+
             <li class="sidebar-item {{ Request::routeIs('contact.index') ? 'active' : '' }}">
                 <a href="{{ route('contact.index') }}" class='sidebar-link'>
                     <i class="bi bi-person-rolodex"></i>

@@ -11,7 +11,9 @@
             <div class="card-header">
                 <h5 class="card-title">
                     <!-- Trigger Add Modal -->
-                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
+                    <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addModal">
+                        <i class="bi bi-pencil"></i>
+                    </button>
                 </h5>
             </div>
             <div class="card-body">
@@ -39,7 +41,9 @@
                                     <td>
                                         <!-- Trigger Edit Modal -->
                                         <button class="m-2 btn btn-light-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editModal-{{ $contact->id }}">Edit</button>
+                                            data-bs-target="#editModal-{{ $contact->id }}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
 
                                         <!-- Edit Modal -->
                                         <div class="modal fade" id="editModal-{{ $contact->id }}" tabindex="-1"
@@ -99,7 +103,9 @@
 
                                         <!-- Trigger Delete Modal -->
                                         <button class="m-2 btn btn-light-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal-{{ $contact->id }}">Delete</button>
+                                            data-bs-target="#deleteModal-{{ $contact->id }}">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </button>
 
                                         <!-- Delete Modal -->
                                         <div class="modal fade" id="deleteModal-{{ $contact->id }}" tabindex="-1"

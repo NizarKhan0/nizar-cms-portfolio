@@ -1,7 +1,7 @@
 <h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary">Portfolio</h1>
 <div class="px-4 py-4 font-san">
     <div class="max-w-6xl mx-auto max-lg:max-w-3xl max-sm:max-w-sm">
-        <div class="text-center uppercase">
+        <div class="text-center">
             <h2 class="text-3xl font-extrabold text-secondary">Latest
                 Projects</h2>
         </div>
@@ -49,13 +49,14 @@
                                 {{ $portfolio->project_description }}
                             </p>
                             <div class="mt-4">
+                                   {{-- relation portfolio dengan skill tengok dekat model --}}
                                 @foreach ($portfolio->skills as $skill)
                                     <span
                                         class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md text-slate-600 bg-teal-50 ring-1 ring-inset ring-gray-500/10">{{ $skill->skill_name }}</span>
                                 @endforeach
                             </div>
                             <button type="button"
-                                class="px-5 py-2.5 text-white text-sm tracking-wider border-none outline-none rounded-md bg-teal-500 hover:bg-purple-teal mt-6"
+                                class="px-5 py-2.5 text-white text-sm tracking-wider border-none outline-none rounded-md bg-teal-500 hover:bg-purple-teal mt-6 font-semibold"
                                 onclick="window.open('{{ $portfolio->project_link }}', '_blank')">
                                 View Project
                             </button>

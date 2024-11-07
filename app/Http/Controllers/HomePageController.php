@@ -27,7 +27,7 @@ class HomePageController extends Controller
         $education = Education::orderBy('education_start_date', 'desc')->get();
         $portfolio = Portfolio::with('skills')->get();
         $services = Service::all();
-        $serviceMainTitle = 'Our Services';
+        $serviceMainTitle = 'Pricing';
         $contact = Contact::all();
 
         return view('index', [
