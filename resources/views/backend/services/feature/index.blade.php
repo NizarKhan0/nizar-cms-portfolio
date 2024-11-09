@@ -8,14 +8,14 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <div class="d-flex mb-3">
-                    <div class="class p-2">
+                <div class="mb-3 d-flex">
+                    <div class="p-2 class">
                         <!-- Add Feature Button -->
                         <button class="m-2 btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addFeatureModal">
                             Add Feature
                         </button>
                     </div>
-                    <div class="ms-auto p-2">
+                    <div class="p-2 ms-auto">
                         <a href="{{ route('service.index') }}" class="btn btn-light-danger">Back</a>
                     </div>
                 </div>
