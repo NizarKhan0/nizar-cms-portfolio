@@ -164,7 +164,7 @@
                         <input type="email" name="email" class="mb-2 form-control" placeholder="Email" required>
                         <input type="text" name="address" class="mb-2 form-control" placeholder="Address" required>
                         <input type="file" name="contact_logo" class="mb-2 form-control" placeholder="Upload Image"
-                            accept="image/*">
+                            accept="image/*" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

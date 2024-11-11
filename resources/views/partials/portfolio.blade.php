@@ -8,7 +8,7 @@
 
         <!-- Navigation Arrows -->
 
-        {{-- <div class="flex justify-center gap-8 pt-10">
+        <div class="flex justify-between gap-8 pt-10">
             <button id="slider-button-left"
                 class="flex items-center justify-center w-12 h-12 transition-all duration-500 border border-teal-600 border-solid rounded-full swiper-button-prev group hover:bg-teal-600 "
                 data-carousel-prev>
@@ -29,10 +29,9 @@
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
-        </div> --}}
+        </div>
 
-
-        <div class="mt-10 swiper mySwiper">
+        <div class="mt-4 swiper mySwiper">
             <div class="swiper-wrapper">
 
                 @foreach ($portfolios as $portfolio)
@@ -46,7 +45,8 @@
                             {{-- <span class="block mt-4 mb-2 text-sm text-slate-100"></span> --}}
                             <h3 class="mb-4 text-xl font-bold text-slate-100">{{ $portfolio->project_title }}</h3>
                             <p class="text-sm text-slate-100">
-                                {{ $portfolio->project_description }}
+                                {{-- {{ $portfolio->project_description }} --}}
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit sequi quis iusto nobis voluptatum dolore ipsa impedit repellat soluta, animi expedita excepturi explicabo consectetur sit neque sed laboriosam, deserunt alias?
                             </p>
                             <div class="mt-4">
                                    {{-- relation portfolio dengan skill tengok dekat model --}}
@@ -66,8 +66,12 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
+
+            <div class="flex justify-center gap-8 pt-10">
+                <div class="swiper-pagination"></div>
+            </div>
+
         </div>
     </div>
 </div>

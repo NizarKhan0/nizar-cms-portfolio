@@ -1729,6 +1729,11 @@ video {
     height: 44px;
   }
 
+  .swiper-pagination {
+    background-color: black;
+    font-weight: bold;
+  }
+
   /* Scroll to top button */
   #myBtn {
     display: none;

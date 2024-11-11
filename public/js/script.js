@@ -83,8 +83,20 @@ const swiper = new Swiper(".mySwiper", {
         el: ".swiper-pagination",
         clickable: true,
         type: "fraction",
-        formatFractionCurrent: function (number) {
-            return number;
+        // formatFractionCurrent: function (number) {
+        //     return number;
+        // },
+        //custom warna text dekat sini(nombor paginate tu)
+        renderFraction: function (currentClass, totalClass) {
+            return (
+                '<span class="' +
+                currentClass +
+                '" style="color: #ffffff;"></span>' +
+                ' <span class="swiper-pagination-separator" style="color: #ffffff;">/</span> ' +
+                '<span class="' +
+                totalClass +
+                '" style="color: #ffffff;"></span>'
+            );
         },
     },
     navigation: {
@@ -119,8 +131,20 @@ const swiper2 = new Swiper(".mySwiper2", {
         el: ".swiper-pagination",
         clickable: true,
         type: "fraction",
-        formatFractionCurrent: function (number) {
-            return number;
+        // formatFractionCurrent: function (number) {
+        //     return number;
+        // },
+        //custom warna text dekat sini(nombor paginate tu)
+        renderFraction: function (currentClass, totalClass) {
+            return (
+                '<span class="' +
+                currentClass +
+                '" style="color: #ffffff;"></span>' +
+                ' <span class="swiper-pagination-separator" style="color: #ffffff;">/</span> ' +
+                '<span class="' +
+                totalClass +
+                '" style="color: #ffffff;"></span>'
+            );
         },
     },
     navigation: {
@@ -187,16 +211,20 @@ navbarLinks.forEach(function (link) {
     });
 });
 
-
 //Back to top
 // Get the button:
 let mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
+window.onscroll = function () {
+    scrollFunction();
+};
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
         mybutton.style.display = "block";
     } else {
         mybutton.style.display = "none";

@@ -21,8 +21,8 @@
 
 <style>
     .swiper-slide {
+        width: auto;
         height: auto;
-        /* ... other styles from the provided code ... */
     }
 </style>
 
@@ -53,6 +53,7 @@
     <!-- Portfolio Section Start -->
     <section id="portfolio" class="pt-40 pb-32">
         @include('partials.portfolio')
+        <!-- Pagination element -->
     </section>
     <!-- Portfolio Section End -->
 

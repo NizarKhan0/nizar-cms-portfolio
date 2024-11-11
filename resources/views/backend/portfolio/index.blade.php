@@ -90,9 +90,8 @@
                                                             <input type="text" name="project_title"
                                                                 class="mb-2 form-control" placeholder="Project Title"
                                                                 value="{{ $portfolio->project_title }}" required>
-                                                            <input type="text" name="project_description"
-                                                                class="mb-2 form-control" placeholder="Project Description"
-                                                                value="{{ $portfolio->project_description }}" required>
+                                                            <textarea name="project_description" class="mb-2 form-control" placeholder="Project Description" cols="10"
+                                                                rows="3" required>{{ $portfolio->project_description }}</textarea>
                                                             <input type="text" name="project_link"
                                                                 class="mb-2 form-control" placeholder="Project Link"
                                                                 value="{{ $portfolio->project_link }}">
@@ -195,8 +194,8 @@
                         <!-- Add form fields -->
                         <input type="text" name="project_title" class="mb-2 form-control" placeholder="Project Title"
                             required>
-                        <input type="text" name="project_description" class="mb-2 form-control"
-                            placeholder="Project Description" required>
+                        <textarea name="project_description" class="mb-2 form-control" placeholder="Project Description" cols="10"
+                            rows="3" required></textarea>
                         <input type="text" name="project_link" class="mb-2 form-control" placeholder="Project Link">
 
                         <h4>Select Skills</h4>
