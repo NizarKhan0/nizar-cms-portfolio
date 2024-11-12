@@ -1,4 +1,4 @@
-<h1 class="mb-16 text-3xl font-bold text-center uppercase text-primary">Services</h1>
+<h1 class="mb-16 text-3xl font-bold text-center uppercase text-primary animate__animated animate__zoomIn">Services</h1>
 <div class="font-[sans-serif]">
     <div class="max-w-6xl px-4 py-6 mx-auto">
 

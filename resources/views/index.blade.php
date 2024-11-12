@@ -8,23 +8,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Nizar Khan - Portfolio</title>
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+    {{-- Guna vite untuk guna import modules setup kat vite.config.js --}}
+    @vite('resources/css/app.css')
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
-
-<style>
-    .swiper-slide {
-        width: auto;
-        height: auto;
-    }
-</style>
 
 <body class="bg-black">
 
@@ -72,6 +65,8 @@
     </footer>
     <!-- Footer Section End -->
 
+    {{-- Guna vite untuk guna import modules setup kat vite.config.js --}}
+    @vite('resources/js/app.js')
     <script src="{{ asset('js/script.js') }}"></script>
 
 </body>

@@ -1,4 +1,4 @@
-<h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary">About</h1>
+<h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary animate__animated animate__zoomIn">About</h1>
 <div class="text-center uppercase">
     <h2 class="pb-4 text-3xl font-extrabold text-secondary">Technical
         Stack</h2>

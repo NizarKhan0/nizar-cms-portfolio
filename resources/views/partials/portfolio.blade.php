@@ -1,4 +1,4 @@
-<h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary">Portfolio</h1>
+<h1 class="mb-20 text-3xl font-bold text-center uppercase text-primary animate__animated animate__zoomIn">Portfolio</h1>
 <div class="px-4 py-4 font-san">
     <div class="max-w-6xl mx-auto max-lg:max-w-3xl max-sm:max-w-sm">
         <div class="text-center">

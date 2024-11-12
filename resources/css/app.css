@@ -1,3 +1,43 @@
+@import 'animate.css';
+/* import styles bundle */
+@import 'swiper/css/bundle';
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-slide {
+    width: auto;
+    height: auto;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: '' !important;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  content: '' !important;
+}
+
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: relative !important;
+  color: #fff;
+  /* Customize arrow color */
+  width: 44px;
+  height: 44px;
+}
+
+.swiper-pagination {
+  background-color: black;
+  font-weight: bold;
+}

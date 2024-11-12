@@ -5,7 +5,7 @@
             <div
                 class="grid md:grid-cols-2 items-center md:gap-8 gap-6 font-[sans-serif] text-[#333] max-w-5xl max-md:max-w-md mx-auto">
                 <div class="max-md:order-1 max-md:text-center">
-                    <h2 class="mb-4 text-3xl font-extrabold text-white md:text-4xl md:leading-10 hover:text-primary">
+                    <h2 class="mb-4 text-3xl font-extrabold text-white md:text-4xl md:leading-10 hover:text-primary animate__animated animate__backInLeft">
                         {{ $home->job_title }}</h2>
 
                     <h3 class="text-lg font-bold text-slate-300">{{ $home->intro }}</h3>
@@ -29,7 +29,7 @@
                 <div class="md:h-[450px] py-8">
                     {{-- wajib letak / tu kalau nak ke access dalam storage --}}
                     <img src="{{ asset('storage/uploads/nizar/' . $home->nizar_image) }}"
-                        class="object-cover mx-auto shadow-2xl bg-slate-900 w-30 h-30 rounded-2xl ring-4 ring-primary"
+                        class="object-cover mx-auto shadow-2xl bg-slate-900 w-30 h-30 rounded-2xl ring-4 ring-primary animate__animated animate__tada"
                         alt="Nizar Khan" width="360" height="360" />
                 </div>
             </div>
