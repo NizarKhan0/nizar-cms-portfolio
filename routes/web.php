@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeAndAbout\HomeController;
 use App\Http\Controllers\HomeAndAbout\WorkController;
 use App\Http\Controllers\HomeAndAbout\SkillController;
 use App\Http\Controllers\HomeAndAbout\EducationController;
+use Illuminate\Support\Facades\Mail;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -27,6 +28,24 @@ Route::get('/dashboard', [HomePageController::class, 'dashboard'])->middleware([
 // Route::middleware('auth')->group(function (){
 
 // });
+
+//Test email dari Hostinger
+// Route::get('/test-email', function () {
+//     $details = [
+//         'title' => 'Test Email from Laravel',
+//         'body' => 'This is a test email to verify SMTP configuration.'
+//     ];
+
+//     Mail::raw($details['body'], function ($message) {
+//         $message->to('nizarkhan7071@gmail.com') // Replace with your email to receive the test
+//                 ->subject('Test Email');
+//     });
+
+//     return 'Email sent successfully!';
+// });
+
+//Setup SEO optimize untuk web
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
 

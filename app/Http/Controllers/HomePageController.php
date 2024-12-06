@@ -2,23 +2,36 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Home;
 use App\Models\Skill;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\Education;
 use App\Models\Portfolio;
-use App\Helpers\EmailHelper;
-use Illuminate\Http\Request;
 use App\Models\WorkExperience;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
+
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class HomePageController extends Controller
 {
 
     public function index()
     {
+        // SEO
+        SEOMeta::setTitle('Nizar Khan - Portfolio');
+        SEOMeta::setDescription('Portfolio rasmi Nizar Khan. Memaparkan kemahiran, perkhidmatan, dan portfolio kerja.');
+        SEOMeta::setCanonical(url()->current());
+
+        // Open Graph
+        OpenGraph::setTitle('Nizar Khan - Portfolio');
+        OpenGraph::setDescription('Portfolio rasmi Nizar Khan. Memaparkan kemahiran, perkhidmatan, dan portfolio kerja.');
+        OpenGraph::setUrl(url()->current());
+        OpenGraph::addProperty('type', 'website');
+        // OpenGraph::addImage(asset('images/og-image.jpg'));
+
+
         $home = Home::all();
         // $skill= Skill::all();
         $skill = Skill::orderBy('percentage', 'desc')->get();
@@ -62,5 +75,4 @@ class HomePageController extends Controller
             'services' => $services
         ]);
     }
-
 }

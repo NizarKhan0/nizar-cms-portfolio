@@ -40,7 +40,7 @@
                         {{-- <img src="https://readymadeui.com/images/food44.webp" alt=""
                             class="object-cover w-full h-64 rounded-md" /> --}}
                         <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image) }}"
-                            alt="" class="object-cover w-full h-64 rounded-md" />
+                            alt="Portfolio Project Image" class="object-cover w-full h-64 rounded-md" />
                         <div class="text-center">
                             {{-- <span class="block mt-4 mb-2 text-sm text-slate-100"></span> --}}
                             <h3 class="mb-4 text-xl font-bold text-slate-100">{{ $portfolio->project_title }}</h3>
