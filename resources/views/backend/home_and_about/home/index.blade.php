@@ -61,6 +61,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+
                                             <div class="mb-3 text-center">
                                                 @if ($home->nizar_image)
                                                     <img src="{{ asset('storage/uploads/nizar/' . $home->nizar_image) }}"
@@ -70,12 +71,14 @@
                                                     <p>No Image Uploaded</p>
                                                 @endif
                                             </div>
+
                                             <!-- File Upload Input -->
                                             <div class="m-3">
                                                 <label for="nizar_image">Upload New Image:</label>
                                                 <input type="file" name="nizar_image" class="mb-2 form-control"
                                                     placeholder="Upload Image" accept="image/*">
                                             </div>
+
                                             <!-- Edit form fields -->
                                             <input type="text" name="job_title" class="mb-2 form-control"
                                                 value="{{ $home->job_title }}" required>
@@ -86,11 +89,13 @@
                                             <input type="text" name="cta_text" class="mb-2 form-control"
                                                 value="{{ $home->cta_text }}">
                                         </div>
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
+
                                     </form>
                                 </div>
                             </div>
@@ -147,7 +152,7 @@
                                     <input type="text" name="cta_text" class="mb-2 form-control"
                                         placeholder="CTA Text">
                                     <input type="file" name="nizar_image" class="mb-2 form-control"
-                                        placeholder="Upload Image" accept="image/*" required>
+                                        placeholder="Upload Image" accept="image/*">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"

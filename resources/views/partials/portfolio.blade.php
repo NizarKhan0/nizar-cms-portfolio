@@ -36,7 +36,7 @@
 
                 @foreach ($portfolios as $portfolio)
                     <!-- Slide -->
-                    <div class="p-4 overflow-hidden transition-all duration-300 rounded-md swiper-slide bg-secondary">
+                    <div class="p-4 overflow-hidden transition-all duration-300 rounded-md swiper-slide bg-secondary animate__animated animate__backInUp">
                         {{-- <img src="https://readymadeui.com/images/food44.webp" alt=""
                             class="object-cover w-full h-64 rounded-md" /> --}}
                         <img src="{{ asset('storage/uploads/projects/' . $portfolio->project_image) }}"
@@ -45,8 +45,7 @@
                             {{-- <span class="block mt-4 mb-2 text-sm text-slate-100"></span> --}}
                             <h3 class="mb-4 text-xl font-bold text-slate-100">{{ $portfolio->project_title }}</h3>
                             <p class="text-sm text-slate-100">
-                                {{-- {{ $portfolio->project_description }} --}}
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit sequi quis iusto nobis voluptatum dolore ipsa impedit repellat soluta, animi expedita excepturi explicabo consectetur sit neque sed laboriosam, deserunt alias?
+                                {{ $portfolio->project_description }}
                             </p>
                             <div class="mt-4">
                                    {{-- relation portfolio dengan skill tengok dekat model --}}

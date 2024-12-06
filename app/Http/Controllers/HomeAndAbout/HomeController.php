@@ -25,12 +25,16 @@ class HomeController extends Controller
         // Validate the request data
         $request->validated();
 
-        // Process the image file
-        $image = $request->file('nizar_image');
-        $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name
-        $extension = $image->getClientOriginalExtension(); // Get the file extension
-        $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append unique ID to the original name
-        $image->move(public_path('storage/uploads/nizar'), $imageName); // Move file to storage path
+        $imageName = 'nizar.png'; // Default image
+
+        // Process the image file if uploaded
+        if ($request->hasFile('nizar_image')) {
+            $image = $request->file('nizar_image');
+            $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $image->getClientOriginalExtension();
+            $imageName = $originalName . '_' . uniqid() . '.' . $extension;
+            $image->move(public_path('storage/uploads/nizar'), $imageName);
+        }
 
         // Create new Home instance and save data
         $home = new Home();
@@ -42,9 +46,9 @@ class HomeController extends Controller
         $home->nizar_image = $imageName;
         $home->save();
 
-        // Redirect back with success message
         return redirect()->route('home.index')->with('success', 'Home created successfully');
     }
+
 
     public function update(Home $home, HomeRequest $request)
     {
@@ -54,21 +58,20 @@ class HomeController extends Controller
         // Check if a new image has been uploaded
         if ($request->hasFile('nizar_image')) {
             // Delete the old image if it exists
-            if ($home->nizar_image) {
+            if ($home->nizar_image && $home->nizar_image !== 'nizar.png') {
                 $oldImagePath = public_path('storage/uploads/nizar/' . $home->nizar_image);
                 if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath); // Delete the old image file
+                    unlink($oldImagePath);
                 }
             }
 
             // Upload the new image
             $image = $request->file('nizar_image');
-            $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME); // Get the original file name without extension
-            $extension = $image->getClientOriginalExtension(); // Get the file extension
-            $imageName = $originalName . '_' . uniqid() . '.' . $extension; // Append unique ID to the original name
-            $image->move(public_path('storage/uploads/nizar'), $imageName); // Save the new image
+            $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $image->getClientOriginalExtension();
+            $imageName = $originalName . '_' . uniqid() . '.' . $extension;
+            $image->move(public_path('storage/uploads/nizar'), $imageName);
 
-            // Update the image path in the database
             $home->nizar_image = $imageName;
         }
 
@@ -78,7 +81,9 @@ class HomeController extends Controller
         $home->description = $request->description;
         $home->cta_link = $request->cta_link;
         $home->cta_text = $request->cta_text;
-        $home->save(); // Save the changes to the database
+
+        // Save the changes to the database
+        $home->save();
 
         return redirect()->route('home.index')->with('success', 'Home updated successfully');
     }
@@ -86,7 +91,18 @@ class HomeController extends Controller
 
     public function destroy(Home $home)
     {
+        // Check if the image exists and is not the default image
+        if ($home->nizar_image && $home->nizar_image !== 'nizar.png') {
+            $imagePath = public_path('storage/uploads/nizar/' . $home->nizar_image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath); // Delete the image file
+            }
+        }
+
+        // Delete the database record
         $home->delete();
+
         return redirect()->route('home.index')->with('success', 'Home deleted successfully');
     }
+
 }

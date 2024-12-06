@@ -28,7 +28,8 @@
         </div> --}}
                 <div class="md:h-[450px] py-8">
                     {{-- wajib letak / tu kalau nak ke access dalam storage --}}
-                    <img src="{{ asset('storage/uploads/nizar/' . $home->nizar_image) }}"
+                    {{-- <img src="{{ asset('storage/uploads/nizar/' . $home->nizar_image) }}" --}}
+                    <img src="{{ asset($home->nizar_image && $home->nizar_image !== 'nizar.png' ? 'storage/uploads/nizar/' . $home->nizar_image : 'img/nizar.png') }}"
                         class="object-cover mx-auto shadow-2xl bg-slate-900 w-30 h-30 rounded-2xl ring-4 ring-primary animate__animated animate__tada"
                         alt="Nizar Khan" width="360" height="360" />
                 </div>
@@ -43,3 +44,4 @@
     @endif
 
 </div>
+C:\laragon\www\nizar-cms\public\img\nizar.png

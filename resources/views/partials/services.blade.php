@@ -37,7 +37,7 @@
 
                 @foreach ($services as $service)
                     <div
-                        class="overflow-hidden transition-all shadow-md bg-secondary swiper-slide rounded-2xl hover:shadow-lg">
+                        class="overflow-hidden transition-all shadow-md bg-secondary swiper-slide rounded-2xl hover:shadow-lg animate__animated animate__backInUp">
                         <div class="p-8">
                             <h3 class="mb-3 text-xl font-semibold text-white">{{ $service->service_package }}</h3>
                             <p class="text-sm leading-relaxed text-slate-300">{{ $service->service_description }}</p>

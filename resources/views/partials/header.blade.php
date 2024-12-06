@@ -27,12 +27,18 @@
             <li class='max-lg:border-b max-lg:py-3'><a href='#about'
                     class='hover:text-primary text-third block font-bold text-[15px]'>About</a>
             </li>
-            <li class='max-lg:border-b max-lg:py-3'><a href='#portfolio'
-                    class='hover:text-primary text-third block font-bold text-[15px]'>Portfolio</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3'><a href='#services'
-                    class='hover:text-primary text-third block font-bold text-[15px]'>Services</a>
-            </li>
+
+            @if (count($portfolios) > 0)
+                <li class='max-lg:border-b max-lg:py-3'><a href='#portfolio'
+                        class='hover:text-primary text-third block font-bold text-[15px]'>Portfolio</a>
+                </li>
+            @endif
+
+            @if (count($services) > 0)
+                <li class='max-lg:border-b max-lg:py-3'><a href='#services'
+                        class='hover:text-primary text-third block font-bold text-[15px]'>Services</a>
+                </li>
+            @endif
             <li class='max-lg:border-b max-lg:py-3'><a href='#contact'
                     class='hover:text-primary text-third block font-bold text-[15px]'>Contact</a>
             </li>
@@ -74,8 +80,7 @@
 
         <!-- Email -->
         <a href="mailto:nizarkhan7071@gmail.com" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
-                class="size-8">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-8">
                 <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
                 <path
                     d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />

@@ -44,10 +44,13 @@
     <!-- About Section End -->
 
     <!-- Portfolio Section Start -->
-    <section id="portfolio" class="pt-40 pb-32">
-        @include('partials.portfolio')
-        <!-- Pagination element -->
-    </section>
+    @if (count($portfolios) > 0)
+        <section id="portfolio" class="pt-40 pb-32">
+            @include('partials.portfolio')
+            <!-- Pagination element -->
+        </section>
+    @else
+    @endif
     <!-- Portfolio Section End -->
 
     <!-- Services Section Start -->
