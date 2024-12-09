@@ -44,4 +44,4 @@
     @endif
 
 </div>
-C:\laragon\www\nizar-cms\public\img\nizar.png
+

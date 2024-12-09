@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FeaturesController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\PortfolioController;
@@ -11,11 +13,17 @@ use App\Http\Controllers\HomeAndAbout\HomeController;
 use App\Http\Controllers\HomeAndAbout\WorkController;
 use App\Http\Controllers\HomeAndAbout\SkillController;
 use App\Http\Controllers\HomeAndAbout\EducationController;
-use Illuminate\Support\Facades\Mail;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//Untuk link storage
+// Route::get('/storage-link', function() {
+//     Artisan::call('storage:link');
+//     return 'Storage linked successfully.';
+// });
+
 
 //HomePage
 Route::get('/', [HomePageController::class, 'index'])->name('home');

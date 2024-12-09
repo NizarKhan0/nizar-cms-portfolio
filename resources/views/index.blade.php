@@ -22,6 +22,15 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
+<style>
+    .text-gray-lite {
+    color: #666;
+}
+.dark\:text-[#A6A6A6] {
+    color: #a6a6a6;
+}
+</style>
+
 <body class="bg-black">
 
     <button onclick="topFunction()" id="myBtn" title="Go to top">
