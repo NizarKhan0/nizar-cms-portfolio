@@ -3,15 +3,16 @@
 {{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth"> --}}
 
 <head>
+    
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBN627L0J6"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBN627L0J6"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-CBN627L0J6');
-    </script>
+    </script> -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
